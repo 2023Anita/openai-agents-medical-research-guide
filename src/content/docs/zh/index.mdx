@@ -1,0 +1,51 @@
+---
+title: 开始学习
+description: 面向医疗科研场景的 OpenAI Agents SDK 多语言实战课程。
+---
+
+> 本课程教你用一个“医疗科研助手”理解 OpenAI Agents SDK。边界很明确：做科研设计、文献规划、统计草案和论文结构，不做诊断、治疗、分诊、用药或患者个体化建议。
+
+![Agent loop architecture](../../../assets/architect/03-agent-loop.png)
+
+## 记忆口诀
+
+`Agent 定角色，Runner 跑流程，Tools 做事情，Handoffs 分专家，Guardrails 守边界，Sessions 留记忆，Tracing 查过程。`
+
+## 适合谁
+
+- 医生、护士、科研学习者，想把 AI 用在论文和科研流程中。
+- AI 工具新手，想用医学场景理解 Agent 工程。
+- 开发者，想做一个安全、可解释、可调试的本地科研助手。
+
+## 课程结构
+
+1. [总览：为什么是 Agents SDK](./guides/overview/)
+2. [Agent + Runner](./guides/agent-runner/)
+3. [Tools](./guides/tools/)
+4. [Structured Output](./guides/structured-output/)
+5. [Sessions](./guides/sessions/)
+6. [Multi-agent](./guides/multi-agent/)
+7. [Guardrails](./guides/guardrails/)
+8. [Tracing](./guides/tracing/)
+
+## 快速运行示例
+
+```bash
+cd openai-agents-medical-research-guide
+python3 "examples/medical_research_agent_demo.py" --offline
+```
+
+真实 SDK 模式：
+
+```bash
+python3 -m venv ".venv"
+source ".venv/bin/activate"
+pip install -r "examples/requirements.txt"
+export OPENAI_API_KEY="sk-..."
+python3 "examples/medical_research_agent_demo.py" --live
+```
+
+## 安全声明
+
+本项目仅用于医学科研辅助教学。所有输出都需要人类研究者、统计师、伦理审查或临床专家复核。
+

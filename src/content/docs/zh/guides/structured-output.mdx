@@ -1,0 +1,54 @@
+---
+title: Structured Output
+description: 用固定字段输出可复用的科研草案。
+sidebar:
+  order: 4
+---
+
+![Structured output](../../../../assets/architect/07-pydantic-validation.png)
+
+## 一句话解释
+
+Structured Output 让输出从“散文”变成“固定字段”。
+
+## 生活类比
+
+你不是让助理自由发挥，而是给他一张表：研究问题、方法、证据、风险提示，每格都要填。
+
+## 最小代码
+
+```python
+from pydantic import BaseModel
+from agents import Agent, Runner
+
+class ResearchBrief(BaseModel):
+    research_question: str
+    method_suggestion: str
+    key_findings: str
+    risk_note: str
+
+agent = Agent(
+    name="科研草案助手",
+    instructions="输出简洁的医学科研设计草案，并提醒人工复核。",
+    output_type=ResearchBrief,
+)
+
+result = Runner.run_sync(agent, "我想研究 SOFA 与 ICU 死亡率。")
+brief = result.final_output
+print(brief.method_suggestion)
+```
+
+## 医疗科研场景
+
+如果后续要写入 Word、表格、数据库或 Streamlit 页面，尽早使用结构化输出。字段越清楚，后续自动化越稳。
+
+## 常见坑
+
+- 字段太多，模型填得空泛。
+- 字段名太抽象，例如 `analysis`，不如 `method_suggestion` 清楚。
+- 忘记给 `risk_note` 留位置，医学边界会被挤掉。
+
+## 练习任务
+
+给 `ResearchBrief` 增加 `ethics_note` 字段，用来写伦理审查、脱敏和人工复核提醒。
+

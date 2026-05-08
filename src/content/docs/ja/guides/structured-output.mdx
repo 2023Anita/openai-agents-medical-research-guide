@@ -1,0 +1,54 @@
+---
+title: Structured Output
+description: 固定フィールドで再利用できる研究草案を出す。
+sidebar:
+  order: 4
+---
+
+![Structured output](../../../../assets/architect/07-pydantic-validation.png)
+
+## 一言で説明
+
+Structured Output は自由な文章を固定フィールドに変えます。
+
+## たとえ
+
+助手に「何か良いものを書いて」と頼むのではなく、研究課題、方法、根拠、リスクメモの欄がある用紙を渡します。
+
+## 最小コード
+
+```python
+from pydantic import BaseModel
+from agents import Agent, Runner
+
+class ResearchBrief(BaseModel):
+    research_question: str
+    method_suggestion: str
+    key_findings: str
+    risk_note: str
+
+agent = Agent(
+    name="Research Brief Assistant",
+    instructions="Return a concise medical research design draft and include a human-review reminder.",
+    output_type=ResearchBrief,
+)
+
+result = Runner.run_sync(agent, "I want to study SOFA and ICU mortality.")
+brief = result.final_output
+print(brief.method_suggestion)
+```
+
+## 医療研究での使い方
+
+Word、表、データベース、Web 画面に後で流すなら、早めに構造化出力を使います。
+
+## よくある失敗
+
+- フィールドが多すぎて内容が薄くなる。
+- `analysis` のような抽象名より `method_suggestion` の方が明確。
+- `risk_note` を忘れると医療境界が弱くなる。
+
+## 練習
+
+`ResearchBrief` に `ethics_note` を追加し、プライバシー、匿名化、倫理審査の注意を書けるようにしてください。
+

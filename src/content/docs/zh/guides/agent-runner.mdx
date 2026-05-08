@@ -1,0 +1,48 @@
+---
+title: Agent + Runner
+description: 定义谁来做，以及怎样把任务跑起来。
+sidebar:
+  order: 2
+---
+
+![Agent and Runner](../../../../assets/architect/01-agent.png)
+
+## 一句话解释
+
+`Agent` 定义“谁来做”，`Runner` 负责“把它跑起来”。
+
+## 生活类比
+
+`Agent` 像你请来的研究助理，`Runner` 像你把任务交给助理并等待结果。
+
+## 最小代码
+
+```python
+from agents import Agent, Runner
+
+agent = Agent(
+    name="医疗科研助手",
+    instructions="你只回答医学科研设计问题，不提供诊断或治疗建议。",
+)
+
+result = Runner.run_sync(
+    agent,
+    "SOFA 动态变化是否能预测脓毒症 ICU 患者 28 天死亡？",
+)
+print(result.final_output)
+```
+
+## 医疗科研场景
+
+第一步先让它回答“这个研究问题应该怎么拆解”，不要一开始就让它做全套系统。基础 agent 稳定后，再逐步加工具、记忆、多 agent 和安全护栏。
+
+## 常见坑
+
+- `instructions` 写得像口号，结果输出不稳定。
+- 没写医疗边界，模型容易滑向诊疗建议。
+- 一开始就上多 agent，调试成本变高。
+
+## 练习任务
+
+把 agent 改成“护理科研助手”，要求它只回答护理科研设计、量表选择和论文结构问题。
+

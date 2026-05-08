@@ -1,0 +1,58 @@
+---
+title: Multi-agent
+description: Split literature, statistics, and writing into specialist agents.
+sidebar:
+  order: 6
+---
+
+![Agents as tools](../../../../assets/architect/08-handoffs-vs-agents-as-tools.png)
+
+## One-sentence explanation
+
+Multi-agent design splits complex work across specialist agents.
+
+## Analogy
+
+A medical paper is not written by one person in isolation. You may need a literature advisor, a statistics advisor, and a writing advisor.
+
+## Minimal code
+
+```python
+from agents import Agent, Runner
+
+literature_agent = Agent(name="Literature Assistant", instructions="Only provide search strategy and evidence notes.")
+statistics_agent = Agent(name="Statistics Assistant", instructions="Only provide study design and statistical advice.")
+
+orchestrator = Agent(
+    name="Medical Research Orchestrator",
+    instructions="Call specialist tools and integrate a concise research draft.",
+    tools=[
+        literature_agent.as_tool(
+            tool_name="literature_helper",
+            tool_description="Provide literature search strategy and evidence signals.",
+        ),
+        statistics_agent.as_tool(
+            tool_name="statistics_helper",
+            tool_description="Provide study design and statistical analysis suggestions.",
+        ),
+    ],
+)
+
+result = Runner.run_sync(orchestrator, "Design a retrospective ICU sepsis study.")
+print(result.final_output)
+```
+
+## Medical research use
+
+Prefer a main agent that owns the final answer and calls specialist agents as tools. That keeps safety boundaries, output format, and voice consistent.
+
+## Common mistakes
+
+- Every specialist becomes a general assistant.
+- Too many agents increase cost and debugging effort.
+- No orchestrator means users receive fragmented answers.
+
+## Exercise
+
+Add an `ethics_agent` responsible only for privacy, de-identification, and ethics-review reminders.
+

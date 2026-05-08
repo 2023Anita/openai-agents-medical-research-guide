@@ -1,0 +1,49 @@
+---
+title: Tracing
+description: 看见 agent 每一步为什么这样做。
+sidebar:
+  order: 8
+---
+
+![Tracing](../../../../assets/architect/14-tracing.png)
+
+## 一句话解释
+
+Tracing 让你看见 agent 的执行过程。
+
+## 生活类比
+
+科研助理给你交最终稿还不够，你还要知道他查了什么、问了谁、哪一步误解了。
+
+## 最小代码
+
+```python
+from agents import Agent, Runner, trace
+
+agent = Agent(name="科研助手", instructions="回答科研设计问题。")
+
+with trace("medical_research_demo"):
+    result = Runner.run_sync(agent, "帮我拆解一个 ICU 回顾性研究问题。")
+
+print(result.final_output)
+```
+
+## 医疗科研场景
+
+Tracing 可以回答：
+
+- 文献助手是否真的被调用？
+- 统计助手为什么建议 logistic 回归？
+- guardrail 是否误伤了正常科研问题？
+- 最终输出变差，是模型问题、工具问题，还是 prompt 问题？
+
+## 常见坑
+
+- 不看 trace，只靠最终答案猜问题。
+- 把敏感输入放进 trace，忽略数据治理。
+- 生产环境没有设置 workflow name，后面很难查。
+
+## 练习任务
+
+跑一次真实示例，在 Trace viewer 里确认有哪些 agent、tool 和 guardrail 被调用。
+

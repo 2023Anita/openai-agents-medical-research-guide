@@ -1,0 +1,49 @@
+---
+title: Tracing
+description: agent が各ステップで何をしたかを見る。
+sidebar:
+  order: 8
+---
+
+![Tracing](../../../../assets/architect/14-tracing.png)
+
+## 一言で説明
+
+Tracing は agent の実行過程を見えるようにします。
+
+## たとえ
+
+研究助手が草案を出すだけでは不十分です。何を調べ、誰に聞き、どこで誤解したかを知る必要があります。
+
+## 最小コード
+
+```python
+from agents import Agent, Runner, trace
+
+agent = Agent(name="Research Assistant", instructions="Answer research design questions.")
+
+with trace("medical_research_demo"):
+    result = Runner.run_sync(agent, "Help decompose an ICU retrospective study question.")
+
+print(result.final_output)
+```
+
+## 医療研究での使い方
+
+Tracing で確認できること：
+
+- 文献 assistant は本当に呼ばれたか。
+- 統計 assistant はなぜ logistic regression を提案したか。
+- guardrail は正常な研究質問を誤って止めたか。
+- 悪い出力の原因はモデル、tool、prompt のどれか。
+
+## よくある失敗
+
+- 最終回答だけ見て推測する。
+- データ管理なしに機微情報を trace に入れる。
+- 本番環境で workflow 名を付け忘れる。
+
+## 練習
+
+live demo を実行し、Trace viewer で agent、tool、guardrail がどのように呼ばれたか確認してください。
+

@@ -1,0 +1,51 @@
+---
+title: Sessions
+description: 让 agent 记住同一个科研项目的上下文。
+sidebar:
+  order: 5
+---
+
+## 一句话解释
+
+Sessions 让 agent 记住同一个会话或课题的上下文。
+
+## 生活类比
+
+没有 session，每次都像重新认识；有 session，助理记得你上次说的是“脓毒症 ICU 数据”。
+
+## 最小代码
+
+```python
+from agents import Agent, Runner, SQLiteSession
+
+agent = Agent(
+    name="科研助手",
+    instructions="围绕同一个科研项目持续协助，但不做临床诊疗建议。",
+)
+
+session = SQLiteSession("sepsis_sofa_project")
+
+first = Runner.run_sync(agent, "我的课题是 SOFA 变化和 28 天死亡。", session=session)
+second = Runner.run_sync(agent, "刚才那个课题适合什么统计模型？", session=session)
+
+print(second.final_output)
+```
+
+## 医疗科研场景
+
+一个 `session_id` 对应一个课题，而不是一个患者。推荐命名：
+
+- `sepsis_sofa_2026`
+- `aki_mortality_mimic`
+- `nursing_scale_validation`
+
+## 常见坑
+
+- 把患者身份信息塞进 session。
+- 一个 session 混多个课题，后续回答串题。
+- 同时混用多种状态机制，导致上下文来源不清。
+
+## 练习任务
+
+设计三个课题 session 名称，并写出每个 session 可以保存哪些非敏感信息。
+

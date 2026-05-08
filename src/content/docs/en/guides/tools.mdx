@@ -1,0 +1,57 @@
+---
+title: Tools
+description: Let the agent call Python functions.
+sidebar:
+  order: 3
+---
+
+![Tool flow](../../../../assets/architect/05-tool.png)
+
+## One-sentence explanation
+
+Tools let the agent call Python functions instead of only generating text.
+
+## Analogy
+
+Without tools, the assistant only speaks from memory. With tools, it can look things up, calculate, read files, and format reports.
+
+## Minimal code
+
+```python
+from agents import Agent, Runner, function_tool
+
+@function_tool
+def explain_scale(scale_name: str) -> str:
+    """Explain the research use of a clinical scale."""
+    if scale_name.upper() == "SOFA":
+        return "SOFA is used to assess organ dysfunction. Research protocols must define scoring time points."
+    return "Confirm the target population, score range, interpretation, and validation version."
+
+agent = Agent(
+    name="Scale Explanation Assistant",
+    instructions="Answer medical research questions and call tools when useful.",
+    tools=[explain_scale],
+)
+
+result = Runner.run_sync(agent, "How is SOFA used in ICU research?")
+print(result.final_output)
+```
+
+## Medical research use
+
+Start with three tool types:
+
+- `search_literature(query)`: placeholder or real literature search.
+- `explain_scale(scale_name)`: APACHE II, SOFA, Charlson, and other scales.
+- `format_research_brief(...)`: turn text into a reusable research brief.
+
+## Common mistakes
+
+- Tool docstrings are too vague.
+- Tools change databases or send requests without confirmation.
+- Tool output is too long and wastes context.
+
+## Exercise
+
+Add `explain_design(design_type)` for `cohort`, `case-control`, and `cross-sectional` designs.
+

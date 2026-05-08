@@ -1,0 +1,58 @@
+---
+title: Multi-agent
+description: 把文献、统计和写作拆给专业 agent。
+sidebar:
+  order: 6
+---
+
+![Agents as tools](../../../../assets/architect/08-handoffs-vs-agents-as-tools.png)
+
+## 一句话解释
+
+Multi-agent 是把复杂任务拆给多个专业 agent。
+
+## 生活类比
+
+一篇医学论文不是一个人闭眼写完的。你可能需要文献老师、统计老师、写作老师一起协作。
+
+## 最小代码
+
+```python
+from agents import Agent, Runner
+
+literature_agent = Agent(name="文献助手", instructions="只负责检索思路和证据总结。")
+statistics_agent = Agent(name="统计助手", instructions="只负责研究设计和统计方法建议。")
+
+orchestrator = Agent(
+    name="医疗科研主助手",
+    instructions="调用专家工具，整合成简洁科研草案。",
+    tools=[
+        literature_agent.as_tool(
+            tool_name="literature_helper",
+            tool_description="提供文献检索思路和证据线索。",
+        ),
+        statistics_agent.as_tool(
+            tool_name="statistics_helper",
+            tool_description="提供研究设计和统计分析建议。",
+        ),
+    ],
+)
+
+result = Runner.run_sync(orchestrator, "帮我设计一个 ICU 脓毒症回顾性研究。")
+print(result.final_output)
+```
+
+## 医疗科研场景
+
+优先用主 agent 控制最终答案，把专家 agent 包装成工具。这样安全边界、输出格式和语气更统一。
+
+## 常见坑
+
+- 每个 agent 都写成“全能助手”，分工形同虚设。
+- 专家太多，成本上升，调试困难。
+- 没有主 agent 汇总，用户看到一堆碎片答案。
+
+## 练习任务
+
+新增 `ethics_agent`，只负责隐私、脱敏、伦理审查提醒，并让主 agent 把伦理风险纳入最终输出。
+

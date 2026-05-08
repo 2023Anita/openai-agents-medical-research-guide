@@ -1,0 +1,57 @@
+---
+title: Tools
+description: 让 agent 调用 Python 函数完成实际任务。
+sidebar:
+  order: 3
+---
+
+![Tool flow](../../../../assets/architect/05-tool.png)
+
+## 一句话解释
+
+Tools 让 agent 不只是聊天，还能调用你写的 Python 函数。
+
+## 生活类比
+
+没有工具的助理只能凭记忆说话；有工具的助理可以查表、算数、读文件、格式化报告。
+
+## 最小代码
+
+```python
+from agents import Agent, Runner, function_tool
+
+@function_tool
+def explain_scale(scale_name: str) -> str:
+    """解释医学量表的科研用途。"""
+    if scale_name.upper() == "SOFA":
+        return "SOFA 常用于器官功能衰竭评估；科研中要明确评分时间点。"
+    return "请确认量表适用人群、评分范围和验证版本。"
+
+agent = Agent(
+    name="量表解释助手",
+    instructions="回答医学科研问题，需要时调用工具。",
+    tools=[explain_scale],
+)
+
+result = Runner.run_sync(agent, "SOFA 在 ICU 研究中怎么用？")
+print(result.final_output)
+```
+
+## 医疗科研场景
+
+先写三类工具就够了：
+
+- `search_literature(query)`：文献检索占位或真实数据库检索。
+- `explain_scale(scale_name)`：解释 APACHE II、SOFA、Charlson 等量表。
+- `format_research_brief(...)`：把输出固定成科研草案。
+
+## 常见坑
+
+- 工具 docstring 写得太模糊，模型不知道何时调用。
+- 工具直接改数据库或发请求，没有确认机制。
+- 工具返回太长文本，浪费上下文。
+
+## 练习任务
+
+新增 `explain_design(design_type)`，支持 `cohort`、`case-control`、`cross-sectional` 三种研究设计。
+

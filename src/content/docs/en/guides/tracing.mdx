@@ -1,0 +1,49 @@
+---
+title: Tracing
+description: See why the agent did each step.
+sidebar:
+  order: 8
+---
+
+![Tracing](../../../../assets/architect/14-tracing.png)
+
+## One-sentence explanation
+
+Tracing makes the agent workflow visible.
+
+## Analogy
+
+A research assistant should not only give you a draft. You should know what they checked, which specialist they asked, and where the misunderstanding happened.
+
+## Minimal code
+
+```python
+from agents import Agent, Runner, trace
+
+agent = Agent(name="Research Assistant", instructions="Answer research design questions.")
+
+with trace("medical_research_demo"):
+    result = Runner.run_sync(agent, "Help decompose an ICU retrospective study question.")
+
+print(result.final_output)
+```
+
+## Medical research use
+
+Tracing helps you answer:
+
+- Was the literature assistant actually called?
+- Why did the statistics assistant suggest logistic regression?
+- Did the guardrail block a valid research question?
+- Was a bad answer caused by the model, the tool, or the prompt?
+
+## Common mistakes
+
+- Guessing from final answers instead of checking traces.
+- Putting sensitive inputs into traces without data governance.
+- Forgetting workflow names in production.
+
+## Exercise
+
+Run the live demo and confirm which agents, tools, and guardrails appear in the Trace viewer.
+

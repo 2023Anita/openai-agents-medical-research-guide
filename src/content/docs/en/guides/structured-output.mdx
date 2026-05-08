@@ -1,0 +1,54 @@
+---
+title: Structured Output
+description: Produce reusable research briefs with fixed fields.
+sidebar:
+  order: 4
+---
+
+![Structured output](../../../../assets/architect/07-pydantic-validation.png)
+
+## One-sentence explanation
+
+Structured Output turns free-form prose into fixed fields.
+
+## Analogy
+
+Instead of asking an assistant to “write something useful,” you hand them a form: research question, method, evidence, and risk note.
+
+## Minimal code
+
+```python
+from pydantic import BaseModel
+from agents import Agent, Runner
+
+class ResearchBrief(BaseModel):
+    research_question: str
+    method_suggestion: str
+    key_findings: str
+    risk_note: str
+
+agent = Agent(
+    name="Research Brief Assistant",
+    instructions="Return a concise medical research design draft and include a human-review reminder.",
+    output_type=ResearchBrief,
+)
+
+result = Runner.run_sync(agent, "I want to study SOFA and ICU mortality.")
+brief = result.final_output
+print(brief.method_suggestion)
+```
+
+## Medical research use
+
+Use structured output early if the result will later be written to Word, a table, a database, or a web interface.
+
+## Common mistakes
+
+- Too many fields create vague answers.
+- Abstract field names like `analysis` are less useful than `method_suggestion`.
+- Omitting `risk_note` weakens the medical boundary.
+
+## Exercise
+
+Add `ethics_note` to `ResearchBrief` for privacy, de-identification, and ethics-review reminders.
+

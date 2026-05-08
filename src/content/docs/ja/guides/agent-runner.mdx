@@ -1,0 +1,48 @@
+---
+title: Agent + Runner
+description: 誰が作業し、どう実行するかを決める。
+sidebar:
+  order: 2
+---
+
+![Agent and Runner](../../../../assets/architect/01-agent.png)
+
+## 一言で説明
+
+`Agent` は「誰が作業するか」を定義し、`Runner` は「その作業を実行する」役割です。
+
+## たとえ
+
+`Agent` はあなたが依頼する研究助手です。`Runner` はその助手にタスクを渡して結果を待つ仕組みです。
+
+## 最小コード
+
+```python
+from agents import Agent, Runner
+
+agent = Agent(
+    name="Medical Research Assistant",
+    instructions="Only answer medical research design questions. Do not provide diagnosis or treatment advice.",
+)
+
+result = Runner.run_sync(
+    agent,
+    "Can dynamic SOFA changes predict 28-day mortality in ICU sepsis patients?",
+)
+print(result.final_output)
+```
+
+## 医療研究での使い方
+
+最初は研究課題の分解だけを依頼します。基本の役割が安定してから、ツール、記憶、複数 agent、安全境界を追加します。
+
+## よくある失敗
+
+- 指示が曖昧で出力が安定しない。
+- 医療境界を書かず、臨床助言に寄ってしまう。
+- 最初から multi-agent にしてデバッグが難しくなる。
+
+## 練習
+
+agent を「看護研究アシスタント」に変え、看護研究設計、尺度選択、論文構成だけを扱うようにしてください。
+

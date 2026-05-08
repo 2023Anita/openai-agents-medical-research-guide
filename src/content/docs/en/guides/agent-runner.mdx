@@ -1,0 +1,48 @@
+---
+title: Agent + Runner
+description: Define who acts and how the task runs.
+sidebar:
+  order: 2
+---
+
+![Agent and Runner](../../../../assets/architect/01-agent.png)
+
+## One-sentence explanation
+
+`Agent` defines who will work; `Runner` runs the work.
+
+## Analogy
+
+The `Agent` is the research assistant you brief. The `Runner` is the mechanism that hands over the task and waits for the result.
+
+## Minimal code
+
+```python
+from agents import Agent, Runner
+
+agent = Agent(
+    name="Medical Research Assistant",
+    instructions="Only answer medical research design questions. Do not provide diagnosis or treatment advice.",
+)
+
+result = Runner.run_sync(
+    agent,
+    "Can dynamic SOFA changes predict 28-day mortality in ICU sepsis patients?",
+)
+print(result.final_output)
+```
+
+## Medical research use
+
+Start by asking the assistant to decompose a research question. Do not begin with a full multi-agent system. Add tools, memory, orchestration, and guardrails once the basic role is stable.
+
+## Common mistakes
+
+- Vague instructions create unstable answers.
+- Missing medical boundaries invite clinical advice.
+- Starting with multi-agent orchestration makes debugging harder.
+
+## Exercise
+
+Change the assistant into a “nursing research assistant” and limit it to nursing study design, scale selection, and manuscript structure.
+

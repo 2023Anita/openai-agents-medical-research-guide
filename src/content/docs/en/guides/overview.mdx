@@ -1,0 +1,45 @@
+---
+title: "Overview: why Agents SDK"
+description: Build the mental model before learning each API.
+sidebar:
+  order: 1
+---
+
+## One-sentence explanation
+
+The Agents SDK is a Python toolkit for building AI workflows that can use tools, run multi-step tasks, coordinate specialist agents, and be debugged.
+
+If you only need one answer, the Responses API is often enough. If the model must decide when to call a function, when to involve a statistics assistant, when to keep project context, and when to trigger a safety boundary, use the Agents SDK.
+
+## Medical research use cases
+
+Good fits:
+
+- Literature question framing: turn “I want to study X and Y” into PICO, keywords, and inclusion criteria.
+- Statistical plan drafts: suggest study design, variables, outcomes, confounders, and missing-data considerations.
+- Manuscript assistance: draft structured Introduction or Methods sections.
+- Local research copilot: iterate on the same project while requiring human review.
+
+Not good fits:
+
+- Patient-specific diagnosis.
+- Treatment or medication advice.
+- Triage or emergency decisions.
+- Unvalidated automatic research conclusions.
+
+## One-page map
+
+| Concept | Plain meaning | Research analogy | Common code |
+| --- | --- | --- | --- |
+| `Agent` | A model with role, rules, and tools | Literature, statistics, writing assistant | `Agent(...)` |
+| `Runner` | Runs the agent workflow | Project manager | `Runner.run(...)` |
+| `Tools` | Abilities the agent can call | Search, scale explanation, formatting | `@function_tool` |
+| `Structured Output` | Fixed output fields | Question, method, risk note | `output_type=BaseModel` |
+| `Sessions` | Conversation memory | Same research project context | `SQLiteSession(...)` |
+| `Multi-agent` | Specialist collaboration | Literature + statistics + writing | `Agent.as_tool()` |
+| `Guardrails` | Safety checks | Block clinical advice | `input_guardrail` |
+| `Tracing` | Execution record | Inspect tools and errors | `trace(...)` |
+
+## Exercise
+
+Explain when you would use the Responses API for a simple literature summary, and when you would use the Agents SDK for a workflow that reads a data dictionary, calls tools, creates a plan, and keeps context.

@@ -1,0 +1,51 @@
+---
+title: Sessions
+description: 同じ研究プロジェクトの文脈を保持する。
+sidebar:
+  order: 5
+---
+
+## 一言で説明
+
+Sessions は agent が複数ターンの文脈を覚えるための仕組みです。
+
+## たとえ
+
+session がないと毎回初対面です。session があると、助手はあなたが ICU 敗血症プロジェクトに取り組んでいることを覚えています。
+
+## 最小コード
+
+```python
+from agents import Agent, Runner, SQLiteSession
+
+agent = Agent(
+    name="Research Assistant",
+    instructions="Help with one research project, but never provide clinical advice.",
+)
+
+session = SQLiteSession("sepsis_sofa_project")
+
+first = Runner.run_sync(agent, "My topic is SOFA change and 28-day mortality.", session=session)
+second = Runner.run_sync(agent, "What statistical model fits that topic?", session=session)
+
+print(second.final_output)
+```
+
+## 医療研究での使い方
+
+一つの `session_id` は一つの研究課題に対応させます。患者一人に対応させないでください。
+
+- `sepsis_sofa_2026`
+- `aki_mortality_mimic`
+- `nursing_scale_validation`
+
+## よくある失敗
+
+- 患者識別情報を session に保存する。
+- 複数の研究課題を一つの session に混ぜる。
+- 複数の状態管理を混ぜて責任範囲が不明になる。
+
+## 練習
+
+三つの研究 session 名を作り、それぞれ保存してよい非機微情報を書いてください。
+

@@ -1,0 +1,51 @@
+---
+title: Start Learning
+description: A multilingual practical course for building medical research assistants with the OpenAI Agents SDK.
+---
+
+> This course uses one focused project, a medical research assistant, to explain the OpenAI Agents SDK. The boundary is strict: research design, literature planning, statistical drafts, and manuscript structure only. No diagnosis, treatment, triage, medication, or patient-specific advice.
+
+![Agent loop architecture](../../../assets/architect/03-agent-loop.png)
+
+## Memory line
+
+`Agent defines the role, Runner drives the flow, Tools do the work, Handoffs route expertise, Guardrails keep boundaries, Sessions keep context, Tracing explains the process.`
+
+## Who this is for
+
+- Clinicians and research learners who want to use AI in papers and study workflows.
+- AI tool beginners who prefer medical examples over abstract infrastructure talk.
+- Developers who want a safe, explainable, debuggable local research assistant.
+
+## Course map
+
+1. [Overview: why Agents SDK](./guides/overview/)
+2. [Agent + Runner](./guides/agent-runner/)
+3. [Tools](./guides/tools/)
+4. [Structured Output](./guides/structured-output/)
+5. [Sessions](./guides/sessions/)
+6. [Multi-agent](./guides/multi-agent/)
+7. [Guardrails](./guides/guardrails/)
+8. [Tracing](./guides/tracing/)
+
+## Run the demo
+
+```bash
+cd openai-agents-medical-research-guide
+python3 "examples/medical_research_agent_demo.py" --offline
+```
+
+Live SDK mode:
+
+```bash
+python3 -m venv ".venv"
+source ".venv/bin/activate"
+pip install -r "examples/requirements.txt"
+export OPENAI_API_KEY="sk-..."
+python3 "examples/medical_research_agent_demo.py" --live
+```
+
+## Safety note
+
+This project is for medical research education only. Every output should be reviewed by a human researcher, statistician, ethics reviewer, or clinical expert.
+

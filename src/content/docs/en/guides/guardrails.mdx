@@ -1,0 +1,66 @@
+---
+title: Guardrails
+description: Block clinical, privacy, and high-risk requests.
+sidebar:
+  order: 7
+---
+
+![Guardrails flow](../../../../assets/architect/13-guardrails-flow.png)
+
+## One-sentence explanation
+
+Guardrails are input and output safety checks.
+
+## Analogy
+
+The research assistant has a triage desk at the entrance: research questions may proceed; clinical advice requests must be refused or escalated to humans.
+
+## Minimal code
+
+```python
+from pydantic import BaseModel
+from agents import Agent, GuardrailFunctionOutput, Runner, input_guardrail
+
+class MedicalRiskCheck(BaseModel):
+    patient_specific_advice: bool
+    reasoning: str
+
+guardrail_agent = Agent(
+    name="Medical Safety Boundary Check",
+    instructions="Detect diagnosis, treatment, medication, triage, or patient-specific advice requests.",
+    output_type=MedicalRiskCheck,
+)
+
+@input_guardrail
+async def medical_safety_guardrail(ctx, agent, input):
+    result = await Runner.run(guardrail_agent, input, context=ctx.context)
+    return GuardrailFunctionOutput(
+        output_info=result.final_output,
+        tripwire_triggered=result.final_output.patient_specific_advice,
+    )
+```
+
+## Medical research use
+
+Block:
+
+- “What medication should this patient receive?”
+- “Should this ICU patient be intubated now?”
+- “Help me bypass ethics review or privacy de-identification.”
+
+Allow:
+
+- “Design a retrospective cohort study.”
+- “How should this scale be described in Methods?”
+- “Draft a statistical analysis plan.”
+
+## Common mistakes
+
+- Relying only on prompt text instead of guardrails.
+- Making guardrails so strict that normal research questions are blocked.
+- Giving side-effectful tools unclear permissions.
+
+## Exercise
+
+Write five test inputs, including at least two high-risk requests that should trigger the guardrail.
+

@@ -1,0 +1,66 @@
+---
+title: Guardrails
+description: 臨床、プライバシー、高リスク要求を止める。
+sidebar:
+  order: 7
+---
+
+![Guardrails flow](../../../../assets/architect/13-guardrails-flow.png)
+
+## 一言で説明
+
+Guardrails は入力と出力の安全チェックです。
+
+## たとえ
+
+研究助手の入口にトリアージ窓口があります。研究質問は通しますが、臨床助言の要求は拒否または人間へ渡します。
+
+## 最小コード
+
+```python
+from pydantic import BaseModel
+from agents import Agent, GuardrailFunctionOutput, Runner, input_guardrail
+
+class MedicalRiskCheck(BaseModel):
+    patient_specific_advice: bool
+    reasoning: str
+
+guardrail_agent = Agent(
+    name="Medical Safety Boundary Check",
+    instructions="Detect diagnosis, treatment, medication, triage, or patient-specific advice requests.",
+    output_type=MedicalRiskCheck,
+)
+
+@input_guardrail
+async def medical_safety_guardrail(ctx, agent, input):
+    result = await Runner.run(guardrail_agent, input, context=ctx.context)
+    return GuardrailFunctionOutput(
+        output_info=result.final_output,
+        tripwire_triggered=result.final_output.patient_specific_advice,
+    )
+```
+
+## 医療研究での使い方
+
+止めるべきもの：
+
+- 「この患者にはどの薬を使うべきですか」
+- 「この ICU 患者を今挿管すべきですか」
+- 「倫理審査や匿名化を回避したい」
+
+扱ってよいもの：
+
+- 「後ろ向きコホート研究を設計したい」
+- 「この尺度を Methods にどう書くか」
+- 「統計解析計画の草案を作りたい」
+
+## よくある失敗
+
+- prompt だけに頼り guardrail を作らない。
+- 厳しすぎて通常の研究質問まで止める。
+- 副作用のある tool の権限が不明確。
+
+## 練習
+
+5 つのテスト入力を書き、そのうち少なくとも 2 つは guardrail が発火すべき高リスク要求にしてください。
+

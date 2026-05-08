@@ -1,0 +1,51 @@
+---
+title: Sessions
+description: Keep context for the same research project.
+sidebar:
+  order: 5
+---
+
+## One-sentence explanation
+
+Sessions let the agent remember context across turns.
+
+## Analogy
+
+Without a session, every turn is a first meeting. With a session, the assistant remembers that you are working on an ICU sepsis project.
+
+## Minimal code
+
+```python
+from agents import Agent, Runner, SQLiteSession
+
+agent = Agent(
+    name="Research Assistant",
+    instructions="Help with one research project, but never provide clinical advice.",
+)
+
+session = SQLiteSession("sepsis_sofa_project")
+
+first = Runner.run_sync(agent, "My topic is SOFA change and 28-day mortality.", session=session)
+second = Runner.run_sync(agent, "What statistical model fits that topic?", session=session)
+
+print(second.final_output)
+```
+
+## Medical research use
+
+One `session_id` should represent one project, not one patient. Good names include:
+
+- `sepsis_sofa_2026`
+- `aki_mortality_mimic`
+- `nursing_scale_validation`
+
+## Common mistakes
+
+- Saving patient identifiers in a session.
+- Mixing several projects in one session.
+- Combining several state systems without clear ownership.
+
+## Exercise
+
+Design three project session names and list which non-sensitive facts each session may store.
+

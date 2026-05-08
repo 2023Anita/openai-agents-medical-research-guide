@@ -1,0 +1,57 @@
+---
+title: Tools
+description: agent に Python 関数を呼ばせる。
+sidebar:
+  order: 3
+---
+
+![Tool flow](../../../../assets/architect/05-tool.png)
+
+## 一言で説明
+
+Tools は agent が文章を書く以外に Python 関数を呼べるようにする仕組みです。
+
+## たとえ
+
+道具のない助手は記憶だけで話します。道具がある助手は、表を調べ、計算し、ファイルを読み、報告書を整形できます。
+
+## 最小コード
+
+```python
+from agents import Agent, Runner, function_tool
+
+@function_tool
+def explain_scale(scale_name: str) -> str:
+    """Explain the research use of a clinical scale."""
+    if scale_name.upper() == "SOFA":
+        return "SOFA is used to assess organ dysfunction. Research protocols must define scoring time points."
+    return "Confirm the target population, score range, interpretation, and validation version."
+
+agent = Agent(
+    name="Scale Explanation Assistant",
+    instructions="Answer medical research questions and call tools when useful.",
+    tools=[explain_scale],
+)
+
+result = Runner.run_sync(agent, "How is SOFA used in ICU research?")
+print(result.final_output)
+```
+
+## 医療研究での使い方
+
+まずは三種類のツールで十分です：
+
+- `search_literature(query)`：文献検索の仮実装または本番検索。
+- `explain_scale(scale_name)`：APACHE II、SOFA、Charlson などを説明。
+- `format_research_brief(...)`：研究草案を固定形式に整える。
+
+## よくある失敗
+
+- docstring が曖昧で、モデルがいつ使うか分からない。
+- 確認なしでデータベース変更や外部送信を行う。
+- ツール出力が長すぎて文脈を浪費する。
+
+## 練習
+
+`cohort`、`case-control`、`cross-sectional` を説明する `explain_design(design_type)` を追加してください。
+
