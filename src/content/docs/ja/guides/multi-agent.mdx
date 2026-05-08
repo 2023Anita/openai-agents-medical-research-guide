@@ -5,6 +5,8 @@ sidebar:
   order: 6
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Agents as tools](../../../../assets/architect/08-handoffs-vs-agents-as-tools.png)
 
 ## 一言で説明
@@ -54,5 +56,40 @@ print(result.final_output)
 
 ## 練習
 
-プライバシー、匿名化、倫理審査だけを担当する `ethics_agent` を追加してください。
-
+<InteractiveExercise
+  id={"ja-multi-agent-interactive-check"}
+  kind={"single"}
+  title={"Multi-agent：最終回答をまとめるのは誰か？"}
+  prompt={"文献、統計、倫理 agent を追加したあと、第一版に最も適した協働方式はどれですか？"}
+  options={[
+  {
+    "id": "a",
+    "label": "三つの専門 agent が主 agent なしで直接ユーザーに答える。"
+  },
+  {
+    "id": "b",
+    "label": "統計 agent がすべての医療安全境界を決める。"
+  },
+  {
+    "id": "c",
+    "label": "主 agent が専門 agent を呼び、リスク提示と人による確認を含む一つの最終回答にまとめる。"
+  },
+  {
+    "id": "d",
+    "label": "すべての agent が自由に全ツールを呼び、最終結論を出す。"
+  }
+]}
+  answers={["c"]}
+  feedback={{
+  "correct": "正解です。主 agent が調整と統合を担うことで、出力形式、安全境界、文体を保てます。",
+  "incorrect": "もう一度考えてください。multi-agent は専門家がばらばらに話す仕組みではなく、統合役が必要です。",
+  "required": "答えを選んでから確認してください。",
+  "completed": "正解です。主 agent が調整と統合を担うことで、出力形式、安全境界、文体を保てます。"
+}}
+  checkLabel={"答えを確認"}
+  resetLabel={"もう一度"}
+  completedLabel={"完了"}
+  typeLabel={"単一選択"}
+  reviewNote={"これは研究学習用の練習であり、臨床助言ではありません。実際の研究では研究者、統計家、倫理審査、臨床専門家による確認が必要です。"}
+  openPractice={"発展課題：`ethics_agent` を追加し、主 agent が最終出力に倫理リスクを含めるようにしてください。"}
+/>

@@ -5,6 +5,8 @@ sidebar:
   order: 5
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ## 一句话解释
 
 Sessions 让 agent 记住同一个会话或课题的上下文。
@@ -47,5 +49,40 @@ print(second.final_output)
 
 ## 练习任务
 
-设计三个课题 session 名称，并写出每个 session 可以保存哪些非敏感信息。
-
+<InteractiveExercise
+  id={"zh-sessions-interactive-check"}
+  kind={"multiple"}
+  title={"记忆边界：Session 可以保存什么？"}
+  prompt={"同一个科研项目的 session 里，哪些信息更适合保存？"}
+  options={[
+  {
+    "id": "a",
+    "label": "课题名称、PICO、研究假设。"
+  },
+  {
+    "id": "b",
+    "label": "纳排标准版本和变量字典版本。"
+  },
+  {
+    "id": "c",
+    "label": "患者姓名、住院号、完整病历原文。"
+  },
+  {
+    "id": "d",
+    "label": "去标识化后的变量计划和非敏感讨论记录。"
+  }
+]}
+  answers={["a","b","d"]}
+  feedback={{
+  "correct": "正确。Session 适合保存项目上下文和去标识化研究信息，不适合保存患者身份信息或原始病历。",
+  "incorrect": "注意隐私边界：能帮助连续研究讨论的信息可以保存，患者身份信息和原始病历不应该进入课程练习 session。",
+  "required": "先选择一个答案，再检查。",
+  "completed": "正确。Session 适合保存项目上下文和去标识化研究信息，不适合保存患者身份信息或原始病历。"
+}}
+  checkLabel={"检查答案"}
+  resetLabel={"重来一次"}
+  completedLabel={"已完成"}
+  typeLabel={"多选题"}
+  reviewNote={"这是科研学习练习，不构成临床诊疗建议；真实项目仍需研究者、统计师、伦理审查或临床专家复核。"}
+  openPractice={"开放复刻任务：设计三个 session 名称，并写出每个 session 只保存哪些非敏感信息。"}
+/>

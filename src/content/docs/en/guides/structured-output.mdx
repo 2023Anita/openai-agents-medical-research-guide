@@ -5,6 +5,8 @@ sidebar:
   order: 4
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Structured output](../../../../assets/architect/07-pydantic-validation.png)
 
 ## One-sentence explanation
@@ -50,5 +52,40 @@ Use structured output early if the result will later be written to Word, a table
 
 ## Exercise
 
-Add `ethics_note` to `ResearchBrief` for privacy, de-identification, and ethics-review reminders.
-
+<InteractiveExercise
+  id={"en-structured-output-interactive-check"}
+  kind={"multiple"}
+  title={"Structured output: what belongs in ethics_note?"}
+  prompt={"After adding `ethics_note` to `ResearchBrief`, what should this field include?"}
+  options={[
+  {
+    "id": "a",
+    "label": "IRB or ethics review reminders."
+  },
+  {
+    "id": "b",
+    "label": "A patient-specific treatment plan."
+  },
+  {
+    "id": "c",
+    "label": "De-identification, data minimization, and sensitive-data handling reminders."
+  },
+  {
+    "id": "d",
+    "label": "Human review, especially statistical and clinical plausibility review."
+  }
+]}
+  answers={["a","c","d"]}
+  feedback={{
+  "correct": "Correct. ethics_note should make ethics, de-identification, data minimization, and human review explicit, not add treatment plans.",
+  "incorrect": "Try again: ethics_note is a risk and review field, not a patient treatment field.",
+  "required": "Choose an answer before checking.",
+  "completed": "Correct. ethics_note should make ethics, de-identification, data minimization, and human review explicit, not add treatment plans."
+}}
+  checkLabel={"Check answer"}
+  resetLabel={"Try again"}
+  completedLabel={"Completed"}
+  typeLabel={"Multiple choice"}
+  reviewNote={"This is a research-learning exercise, not clinical advice. Real projects still need human review by researchers, statisticians, ethics reviewers, or clinical experts."}
+  openPractice={"Open practice: add `ethics_note` to `ResearchBrief` and include one human-review sentence in the sample output."}
+/>

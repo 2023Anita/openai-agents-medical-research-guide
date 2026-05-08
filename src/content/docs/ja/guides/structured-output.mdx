@@ -5,6 +5,8 @@ sidebar:
   order: 4
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Structured output](../../../../assets/architect/07-pydantic-validation.png)
 
 ## 一言で説明
@@ -50,5 +52,40 @@ Word、表、データベース、Web 画面に後で流すなら、早めに構
 
 ## 練習
 
-`ResearchBrief` に `ethics_note` を追加し、プライバシー、匿名化、倫理審査の注意を書けるようにしてください。
-
+<InteractiveExercise
+  id={"ja-structured-output-interactive-check"}
+  kind={"multiple"}
+  title={"構造化出力：ethics_note に入れるものは？"}
+  prompt={"`ResearchBrief` に `ethics_note` を追加するとき、このフィールドに入れるべき内容はどれですか？"}
+  options={[
+  {
+    "id": "a",
+    "label": "倫理審査または IRB 承認の注意。"
+  },
+  {
+    "id": "b",
+    "label": "患者個別の治療計画。"
+  },
+  {
+    "id": "c",
+    "label": "匿名化、データ最小化、機微情報の扱い。"
+  },
+  {
+    "id": "d",
+    "label": "統計的・臨床的妥当性を人が確認すること。"
+  }
+]}
+  answers={["a","c","d"]}
+  feedback={{
+  "correct": "正解です。ethics_note は倫理、匿名化、データ最小化、人による確認を明示する欄です。治療計画ではありません。",
+  "incorrect": "もう一度考えてください。ethics_note はリスクと確認の欄であり、患者治療の欄ではありません。",
+  "required": "答えを選んでから確認してください。",
+  "completed": "正解です。ethics_note は倫理、匿名化、データ最小化、人による確認を明示する欄です。治療計画ではありません。"
+}}
+  checkLabel={"答えを確認"}
+  resetLabel={"もう一度"}
+  completedLabel={"完了"}
+  typeLabel={"複数選択"}
+  reviewNote={"これは研究学習用の練習であり、臨床助言ではありません。実際の研究では研究者、統計家、倫理審査、臨床専門家による確認が必要です。"}
+  openPractice={"発展課題：`ResearchBrief` に `ethics_note` を追加し、出力例に人による確認の一文を入れてください。"}
+/>

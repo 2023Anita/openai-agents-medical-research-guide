@@ -45,6 +45,7 @@ The design should feel professional, calm, and credible. It should not feel like
   - Python code block.
   - Common mistakes list.
   - Exercise block.
+  - Interactive checkpoint card with answer options and feedback states.
 
 ### 4. Language Switch State
 
@@ -96,6 +97,13 @@ The design should feel professional, calm, and credible. It should not feel like
   - Short task.
   - Expected output.
   - Human review reminder when relevant.
+- Interactive checkpoint:
+  - State 1, unanswered: neutral card, visible answer options, primary `Check answer` button.
+  - State 2, correct: teal success feedback, completion chip visible, option layout unchanged.
+  - State 3, incorrect: warm amber feedback with a coaching hint, no harsh error styling.
+  - State 4, completed: restored completion state after refresh, no user answer text stored.
+  - Supports single-choice and multiple-choice questions.
+  - Includes an open practice prompt for forking or remixing the lesson.
 
 ## Implementation Notes
 
@@ -103,4 +111,5 @@ The design should feel professional, calm, and credible. It should not feel like
 - CSS tokens live in `src/styles/custom.css`.
 - Landing page lives in `src/pages/index.astro`.
 - Documentation pages live under `src/content/docs/{zh,en,ja}/`.
-
+- Interactive checkpoint component lives in `src/components/InteractiveExercise.astro`.
+- Checkpoint state is static and browser-local; no backend, login, database, or API key is required.

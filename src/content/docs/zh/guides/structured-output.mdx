@@ -5,6 +5,8 @@ sidebar:
   order: 4
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Structured output](../../../../assets/architect/07-pydantic-validation.png)
 
 ## 一句话解释
@@ -50,5 +52,40 @@ print(brief.method_suggestion)
 
 ## 练习任务
 
-给 `ResearchBrief` 增加 `ethics_note` 字段，用来写伦理审查、脱敏和人工复核提醒。
-
+<InteractiveExercise
+  id={"zh-structured-output-interactive-check"}
+  kind={"multiple"}
+  title={"结构化输出：ethics_note 应该提醒什么？"}
+  prompt={"给 `ResearchBrief` 增加 `ethics_note` 字段时，哪些内容应该进入这个字段？"}
+  options={[
+  {
+    "id": "a",
+    "label": "伦理审查或 IRB 审批提醒。"
+  },
+  {
+    "id": "b",
+    "label": "患者的具体治疗计划。"
+  },
+  {
+    "id": "c",
+    "label": "隐私脱敏、数据最小化和敏感信息处理提醒。"
+  },
+  {
+    "id": "d",
+    "label": "人工复核，尤其是统计和临床合理性复核。"
+  }
+]}
+  answers={["a","c","d"]}
+  feedback={{
+  "correct": "正确。ethics_note 要把伦理、脱敏、数据最小化和人工复核显式写出来，而不是加入治疗计划。",
+  "incorrect": "再想想：ethics_note 是风险和审查字段，不是患者治疗字段。",
+  "required": "先选择一个答案，再检查。",
+  "completed": "正确。ethics_note 要把伦理、脱敏、数据最小化和人工复核显式写出来，而不是加入治疗计划。"
+}}
+  checkLabel={"检查答案"}
+  resetLabel={"重来一次"}
+  completedLabel={"已完成"}
+  typeLabel={"多选题"}
+  reviewNote={"这是科研学习练习，不构成临床诊疗建议；真实项目仍需研究者、统计师、伦理审查或临床专家复核。"}
+  openPractice={"开放复刻任务：给 `ResearchBrief` 增加 `ethics_note`，并让输出样例包含一句人工复核提醒。"}
+/>

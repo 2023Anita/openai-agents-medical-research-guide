@@ -5,6 +5,8 @@ sidebar:
   order: 5
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ## One-sentence explanation
 
 Sessions let the agent remember context across turns.
@@ -47,5 +49,40 @@ One `session_id` should represent one project, not one patient. Good names inclu
 
 ## Exercise
 
-Design three project session names and list which non-sensitive facts each session may store.
-
+<InteractiveExercise
+  id={"en-sessions-interactive-check"}
+  kind={"multiple"}
+  title={"Memory boundary: what can a session keep?"}
+  prompt={"Inside one research project session, which information is appropriate to store?"}
+  options={[
+  {
+    "id": "a",
+    "label": "Project title, PICO, and study hypothesis."
+  },
+  {
+    "id": "b",
+    "label": "Inclusion criteria version and data dictionary version."
+  },
+  {
+    "id": "c",
+    "label": "Patient names, medical record numbers, and full raw clinical notes."
+  },
+  {
+    "id": "d",
+    "label": "De-identified variable plans and non-sensitive discussion notes."
+  }
+]}
+  answers={["a","b","d"]}
+  feedback={{
+  "correct": "Correct. Sessions can keep project context and de-identified research information, not patient identifiers or raw records.",
+  "incorrect": "Mind the privacy boundary: useful project context can be stored, but patient identifiers and raw clinical notes should not enter the course session.",
+  "required": "Choose an answer before checking.",
+  "completed": "Correct. Sessions can keep project context and de-identified research information, not patient identifiers or raw records."
+}}
+  checkLabel={"Check answer"}
+  resetLabel={"Try again"}
+  completedLabel={"Completed"}
+  typeLabel={"Multiple choice"}
+  reviewNote={"This is a research-learning exercise, not clinical advice. Real projects still need human review by researchers, statisticians, ethics reviewers, or clinical experts."}
+  openPractice={"Open practice: design three session names and list only non-sensitive information each session may store."}
+/>

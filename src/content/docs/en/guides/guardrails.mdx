@@ -5,6 +5,8 @@ sidebar:
   order: 7
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Guardrails flow](../../../../assets/architect/13-guardrails-flow.png)
 
 ## One-sentence explanation
@@ -62,5 +64,40 @@ Allow:
 
 ## Exercise
 
-Write five test inputs, including at least two high-risk requests that should trigger the guardrail.
-
+<InteractiveExercise
+  id={"en-guardrails-interactive-check"}
+  kind={"multiple"}
+  title={"Safety triage: which requests must be blocked?"}
+  prompt={"Which user requests should trigger the medical safety guardrail?"}
+  options={[
+  {
+    "id": "a",
+    "label": "Help design a retrospective cohort study for sepsis ICU patients."
+  },
+  {
+    "id": "b",
+    "label": "Should this ICU patient be intubated now?"
+  },
+  {
+    "id": "c",
+    "label": "Help me bypass ethics review and de-identification."
+  },
+  {
+    "id": "d",
+    "label": "Which medication should this patient receive?"
+  }
+]}
+  answers={["b","c","d"]}
+  feedback={{
+  "correct": "Correct. Patient-specific treatment, medication, emergency decisions, and bypassing ethics or privacy controls must be blocked.",
+  "incorrect": "Check the boundary: research design may proceed, but patient-specific care, medication, emergency decisions, and ethics/privacy bypasses cannot.",
+  "required": "Choose an answer before checking.",
+  "completed": "Correct. Patient-specific treatment, medication, emergency decisions, and bypassing ethics or privacy controls must be blocked."
+}}
+  checkLabel={"Check answer"}
+  resetLabel={"Try again"}
+  completedLabel={"Completed"}
+  typeLabel={"Multiple choice"}
+  reviewNote={"This is a research-learning exercise, not clinical advice. Real projects still need human review by researchers, statisticians, ethics reviewers, or clinical experts."}
+  openPractice={"Open practice: write five test inputs, including at least two high-risk requests that should trigger the guardrail."}
+/>

@@ -1,0 +1,162 @@
+---
+interface ExerciseOption {
+  id: string;
+  label: string;
+}
+
+interface ExerciseFeedback {
+  correct: string;
+  incorrect: string;
+  required?: string;
+  completed?: string;
+}
+
+interface Props {
+  id: string;
+  kind: 'single' | 'multiple';
+  title: string;
+  prompt: string;
+  options: ExerciseOption[];
+  answers: string[];
+  feedback: ExerciseFeedback;
+  checkLabel?: string;
+  resetLabel?: string;
+  completedLabel?: string;
+  typeLabel?: string;
+  reviewNote?: string;
+  openPractice?: string;
+}
+
+const {
+  id,
+  kind,
+  title,
+  prompt,
+  options,
+  answers,
+  feedback,
+  checkLabel = 'Check answer',
+  resetLabel = 'Reset',
+  completedLabel = 'Completed',
+  typeLabel = kind === 'single' ? 'Single choice' : 'Multiple choice',
+  reviewNote,
+  openPractice,
+} = Astro.props;
+
+const inputType = kind === 'single' ? 'radio' : 'checkbox';
+const groupName = `exercise-${id}`;
+const feedbackId = `${id}-feedback`;
+const storageKey = `oamrg-exercise:${id}`;
+---
+
+<section
+  class="interactive-exercise"
+  data-exercise-id={id}
+  data-kind={kind}
+  data-answers={JSON.stringify([...answers].sort())}
+  data-storage-key={storageKey}
+>
+  <div class="exercise-kicker">
+    <span>{typeLabel}</span>
+    <span class="exercise-status" data-status hidden>{completedLabel}</span>
+  </div>
+  <h3>{title}</h3>
+  <p class="exercise-prompt">{prompt}</p>
+
+  <fieldset>
+    <legend class="sr-only">{title}</legend>
+    <div class="exercise-options">
+      {
+        options.map((option) => (
+          <label class="exercise-option">
+            <input type={inputType} name={groupName} value={option.id} aria-describedby={feedbackId} />
+            <span class="exercise-option-key">{option.id.toUpperCase()}</span>
+            <span>{option.label}</span>
+          </label>
+        ))
+      }
+    </div>
+  </fieldset>
+
+  <div class="exercise-actions">
+    <button type="button" data-action="check">{checkLabel}</button>
+    <button type="button" data-action="reset">{resetLabel}</button>
+  </div>
+
+  <p class="exercise-feedback" id={feedbackId} role="status" aria-live="polite" data-feedback hidden></p>
+
+  {reviewNote && <p class="exercise-review-note">{reviewNote}</p>}
+  {openPractice && <p class="exercise-open-practice">{openPractice}</p>}
+</section>
+
+<script is:inline define:vars={{ exerciseId: id, feedbackCopy: feedback }}>
+  const root = document.querySelector(`[data-exercise-id="${exerciseId}"]`);
+
+  if (root) {
+    const inputs = Array.from(root.querySelectorAll('input'));
+    const feedbackEl = root.querySelector('[data-feedback]');
+    const statusEl = root.querySelector('[data-status]');
+    const checkButton = root.querySelector('[data-action="check"]');
+    const resetButton = root.querySelector('[data-action="reset"]');
+    const storageKey = root.dataset.storageKey;
+    const answers = JSON.parse(root.dataset.answers || '[]');
+
+    const getSelected = () =>
+      inputs
+        .filter((input) => input.checked)
+        .map((input) => input.value)
+        .sort();
+
+    const sameAnswers = (selected) =>
+      selected.length === answers.length && selected.every((value, index) => value === answers[index]);
+
+    const showFeedback = (state, message) => {
+      root.dataset.state = state;
+      feedbackEl.hidden = false;
+      feedbackEl.textContent = message;
+    };
+
+    const restoreCompletion = () => {
+      if (storageKey && localStorage.getItem(storageKey) === 'complete') {
+        root.dataset.state = 'complete';
+        statusEl.hidden = false;
+        showFeedback('complete', feedbackCopy.completed || feedbackCopy.correct);
+      }
+    };
+
+    checkButton.addEventListener('click', () => {
+      const selected = getSelected();
+
+      if (selected.length === 0) {
+        showFeedback('incorrect', feedbackCopy.required || feedbackCopy.incorrect);
+        return;
+      }
+
+      if (sameAnswers(selected)) {
+        if (storageKey) {
+          localStorage.setItem(storageKey, 'complete');
+        }
+        statusEl.hidden = false;
+        showFeedback('correct', feedbackCopy.correct);
+      } else {
+        showFeedback('incorrect', feedbackCopy.incorrect);
+      }
+    });
+
+    resetButton.addEventListener('click', () => {
+      inputs.forEach((input) => {
+        input.checked = false;
+      });
+      if (storageKey) {
+        localStorage.removeItem(storageKey);
+      }
+      root.dataset.state = 'idle';
+      feedbackEl.hidden = true;
+      feedbackEl.textContent = '';
+      statusEl.hidden = true;
+    });
+
+    statusEl.hidden = true;
+    restoreCompletion();
+  }
+</script>

@@ -5,6 +5,8 @@ sidebar:
   order: 8
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Tracing](../../../../assets/architect/14-tracing.png)
 
 ## 一言で説明
@@ -45,5 +47,44 @@ Tracing で確認できること：
 
 ## 練習
 
-live demo を実行し、Trace viewer で agent、tool、guardrail がどのように呼ばれたか確認してください。
-
+<InteractiveExercise
+  id={"ja-tracing-interactive-check"}
+  kind={"multiple"}
+  title={"Trace 復習：完全な実行で見るべきものは？"}
+  prompt={"Trace viewer で完全な実行を確認するとき、重要な証拠はどれですか？"}
+  options={[
+  {
+    "id": "a",
+    "label": "どの agent が実行されたか。"
+  },
+  {
+    "id": "b",
+    "label": "どの tool が呼ばれ、入力と出力が妥当か。"
+  },
+  {
+    "id": "c",
+    "label": "guardrail が発火したか、その理由は何か。"
+  },
+  {
+    "id": "d",
+    "label": "最終出力が構造と安全境界を守っているか。"
+  },
+  {
+    "id": "e",
+    "label": "ユーザーの API key の平文。"
+  }
+]}
+  answers={["a","b","c","d"]}
+  feedback={{
+  "correct": "正解です。Trace は agent、tool、guardrail、最終出力の流れを確認するためのものです。秘密情報を出してはいけません。",
+  "incorrect": "もう一度考えてください。Trace は実行経路の確認に使いますが、秘密情報を表示してはいけません。",
+  "required": "答えを選んでから確認してください。",
+  "completed": "正解です。Trace は agent、tool、guardrail、最終出力の流れを確認するためのものです。秘密情報を出してはいけません。"
+}}
+  checkLabel={"答えを確認"}
+  resetLabel={"もう一度"}
+  completedLabel={"完了"}
+  typeLabel={"複数選択"}
+  reviewNote={"これは研究学習用の練習であり、臨床助言ではありません。実際の研究では研究者、統計家、倫理審査、臨床専門家による確認が必要です。"}
+  openPractice={"発展課題：実例を一回実行し、Trace viewer に出た agent、tool、guardrail を確認してください。"}
+/>

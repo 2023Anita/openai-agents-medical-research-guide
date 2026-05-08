@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Agent and Runner](../../../../assets/architect/01-agent.png)
 
 ## One-sentence explanation
@@ -44,5 +46,40 @@ Start by asking the assistant to decompose a research question. Do not begin wit
 
 ## Exercise
 
-Change the assistant into a “nursing research assistant” and limit it to nursing study design, scale selection, and manuscript structure.
-
+<InteractiveExercise
+  id={"en-agent-runner-interactive-check"}
+  kind={"single"}
+  title={"Role boundary: how should a nursing research assistant behave?"}
+  prompt={"If you change the agent into a nursing research assistant, which instruction is safest?"}
+  options={[
+  {
+    "id": "a",
+    "label": "You are a universal medical assistant. Answer all patient and research questions."
+  },
+  {
+    "id": "b",
+    "label": "You may provide nursing diagnosis and treatment advice based on the patient situation."
+  },
+  {
+    "id": "c",
+    "label": "Only answer nursing research design, scale selection, and manuscript structure questions. Do not provide diagnosis, treatment, triage, or patient-specific advice."
+  },
+  {
+    "id": "d",
+    "label": "Prioritize complete manuscript generation and avoid uncertainty notes."
+  }
+]}
+  answers={["c"]}
+  feedback={{
+  "correct": "Correct. Define the role and boundary first: nursing research support is in scope; patient-specific clinical advice is not.",
+  "incorrect": "This instruction is not safe enough. A good agent instruction states both what it can do and what it must refuse.",
+  "required": "Choose an answer before checking.",
+  "completed": "Correct. Define the role and boundary first: nursing research support is in scope; patient-specific clinical advice is not."
+}}
+  checkLabel={"Check answer"}
+  resetLabel={"Try again"}
+  completedLabel={"Completed"}
+  typeLabel={"Single choice"}
+  reviewNote={"This is a research-learning exercise, not clinical advice. Real projects still need human review by researchers, statisticians, ethics reviewers, or clinical experts."}
+  openPractice={"Open practice: change the example agent into a nursing research assistant while keeping the same safety boundary."}
+/>

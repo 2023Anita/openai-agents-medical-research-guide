@@ -2,6 +2,7 @@
 const base = import.meta.env.BASE_URL;
 const pathWithBase = (path: string) => `${base}${base.endsWith('/') ? '' : '/'}${path}`;
 const zhStart = pathWithBase('zh/guides/overview/');
+const zhExercise = pathWithBase('zh/guides/guardrails/');
 const enStart = pathWithBase('en/guides/overview/');
 const jaStart = pathWithBase('ja/guides/overview/');
 const demoHref =
@@ -36,18 +37,34 @@ const demoHref =
       </nav>
 
       <section class="hero">
-        <p class="eyebrow">Multilingual course · Python · Safety-first agents</p>
-        <h1>Build medical research agents with clarity, boundaries, and taste.</h1>
+        <p class="eyebrow">Interactive Course Lab · Python · Safety-first agents</p>
+        <h1>Build medical research agents in a course you can answer, fork, and remix.</h1>
         <p class="lede">
-          A premium, practical guide for doctors, researchers, and AI builders who want to understand
-          the OpenAI Agents SDK through one focused project: a medical research assistant that can use
-          tools, structure outputs, remember context, orchestrate specialist agents, enforce guardrails,
-          and trace every step.
+          Not a slide deck. This is a forkable GitHub-native course lab for doctors, researchers, and
+          AI builders who want to learn the OpenAI Agents SDK by reading, answering, running, and
+          rebuilding one focused project: a safety-first medical research assistant.
         </p>
         <div class="hero-actions">
           <a class="button primary" href={zhStart}>Start learning</a>
+          <a class="button secondary" href={zhExercise}>Try an exercise</a>
           <a class="button secondary" href={demoHref}>View demo code</a>
         </div>
+      </section>
+
+      <section class="lab-panel" aria-label="Interactive course lab">
+        <div>
+          <p class="eyebrow">From presentation to practice</p>
+          <h2>Every chapter now has a small checkpoint.</h2>
+          <p>
+            Learners choose an answer, get immediate feedback, and then use the open practice prompt
+            to fork the project into their own research or teaching context.
+          </p>
+        </div>
+        <ul>
+          <li><strong>Answer</strong><span>single and multiple choice checks</span></li>
+          <li><strong>Feedback</strong><span>correct, incorrect, and completion states</span></li>
+          <li><strong>Remix</strong><span>open-ended practice for GitHub forks</span></li>
+        </ul>
       </section>
 
       <section class="cards" aria-label="Course highlights">
@@ -118,6 +135,7 @@ const demoHref =
   .topbar,
   .hero,
   .cards,
+  .lab-panel,
   .course-map {
     width: min(1120px, calc(100% - 40px));
     margin: 0 auto;
@@ -222,6 +240,58 @@ const demoHref =
     padding-bottom: 54px;
   }
 
+  .lab-panel {
+    align-items: center;
+    background: #101917;
+    border: 1px solid rgba(21, 33, 31, 0.12);
+    border-radius: 8px;
+    color: #f8fbfa;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr 1.05fr;
+    margin-bottom: 54px;
+    padding: 28px;
+  }
+
+  .lab-panel h2 {
+    font-size: clamp(1.8rem, 4vw, 3.4rem);
+    letter-spacing: 0;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .lab-panel p:not(.eyebrow) {
+    color: #b7c9c4;
+    line-height: 1.7;
+    margin: 18px 0 0;
+  }
+
+  .lab-panel ul {
+    display: grid;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .lab-panel li {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: grid;
+    gap: 4px;
+    padding: 16px;
+  }
+
+  .lab-panel strong {
+    color: #57c9b5;
+    font-size: 1.05rem;
+  }
+
+  .lab-panel span {
+    color: #d7e4e1;
+  }
+
   article {
     background: rgba(255, 255, 255, 0.74);
     border: 1px solid rgba(21, 33, 31, 0.1);
@@ -272,6 +342,7 @@ const demoHref =
 
   @media (max-width: 760px) {
     .topbar,
+    .lab-panel,
     .course-map {
       display: block;
     }
@@ -286,6 +357,14 @@ const demoHref =
 
     .cards {
       grid-template-columns: 1fr;
+    }
+
+    .lab-panel {
+      padding: 22px;
+    }
+
+    .lab-panel ul {
+      margin-top: 24px;
     }
   }
 </style>

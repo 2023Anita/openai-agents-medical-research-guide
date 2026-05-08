@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Agent and Runner](../../../../assets/architect/01-agent.png)
 
 ## 一句话解释
@@ -44,5 +46,40 @@ print(result.final_output)
 
 ## 练习任务
 
-把 agent 改成“护理科研助手”，要求它只回答护理科研设计、量表选择和论文结构问题。
-
+<InteractiveExercise
+  id={"zh-agent-runner-interactive-check"}
+  kind={"single"}
+  title={"角色边界：护理科研助手应该怎么写？"}
+  prompt={"如果把 agent 改成“护理科研助手”，下面哪条 instructions 最稳妥？"}
+  options={[
+  {
+    "id": "a",
+    "label": "你是万能医疗助手，尽量回答所有患者和科研问题。"
+  },
+  {
+    "id": "b",
+    "label": "你可以根据患者情况给出护理诊断和治疗建议。"
+  },
+  {
+    "id": "c",
+    "label": "你只回答护理科研设计、量表选择和论文结构问题，不提供诊断、治疗、分诊或患者个体化建议。"
+  },
+  {
+    "id": "d",
+    "label": "你优先生成完整论文，不需要说明不确定性。"
+  }
+]}
+  answers={["c"]}
+  feedback={{
+  "correct": "正确。Agent 的第一步是定角色和边界：护理科研可以做，患者个体化诊疗不能做。",
+  "incorrect": "这条指令还不够安全。好的 Agent 指令要同时写清楚“能做什么”和“不能做什么”。",
+  "required": "先选择一个答案，再检查。",
+  "completed": "正确。Agent 的第一步是定角色和边界：护理科研可以做，患者个体化诊疗不能做。"
+}}
+  checkLabel={"检查答案"}
+  resetLabel={"重来一次"}
+  completedLabel={"已完成"}
+  typeLabel={"单选题"}
+  reviewNote={"这是科研学习练习，不构成临床诊疗建议；真实项目仍需研究者、统计师、伦理审查或临床专家复核。"}
+  openPractice={"开放复刻任务：把示例 agent 改成护理科研助手，并保留同样的安全边界。"}
+/>

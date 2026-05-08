@@ -14,6 +14,17 @@ Most Agents SDK tutorials explain the API in abstract terms. This guide teaches 
 
 This is not a clinical decision-support system. It is a learning project for research design, literature planning, statistical drafts, and manuscript structure.
 
+## Interactive course lab
+
+This project is designed as a GitHub-native course lab, not a slide deck. Each chapter now includes a small interactive checkpoint:
+
+- choose an answer directly in the docs page
+- get immediate correct/incorrect feedback
+- keep lightweight completion state in the browser
+- use the open practice prompt to fork, remix, and rebuild the project in your own domain
+
+The first version is fully static and runs on GitHub Pages. It does not use a backend, login, database, or API key.
+
 ## Languages
 
 - [中文课程](./src/content/docs/zh/index.mdx)
@@ -36,6 +47,15 @@ https://2023Anita.github.io/openai-agents-medical-research-guide/
 6. Multi-agent
 7. Guardrails
 8. Tracing
+
+## Learning path
+
+1. Read one short chapter.
+2. Answer the embedded checkpoint.
+3. Run or inspect the matching example code.
+4. Fork the repository.
+5. Replace the medical research scenario with your own teaching or research topic.
+6. Publish your version as a GitHub Pages course.
 
 ## Quick start
 
@@ -74,6 +94,8 @@ This project is for medical research education only. It does not provide diagnos
 │   ├── medical_research_agent_demo.py
 │   └── requirements.txt
 ├── src/
+│   ├── components/
+│   │   └── InteractiveExercise.astro
 │   ├── content/docs/
 │   │   ├── zh/
 │   │   ├── en/

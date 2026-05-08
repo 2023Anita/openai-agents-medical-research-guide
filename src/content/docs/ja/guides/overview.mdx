@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ## 一言で説明
 
 Agents SDK は、ツールを使い、複数ステップを実行し、専門 agent と協力し、デバッグできる AI ワークフローを作るための Python ツールキットです。
@@ -42,4 +44,40 @@ Agents SDK は、ツールを使い、複数ステップを実行し、専門 ag
 
 ## 練習
 
-単純な文献要約なら Responses API と Agents SDK のどちらを使うか。データ辞書を読み、ツールを呼び、計画を作り、文脈を保存するならどちらを使うか説明してください。
+<InteractiveExercise
+  id={"ja-overview-interactive-check"}
+  kind={"single"}
+  title={"クイック確認：いつ Agents SDK が必要か？"}
+  prompt={"一回の Responses API 呼び出しではなく、Agents SDK が最も必要なタスクはどれですか？"}
+  options={[
+  {
+    "id": "a",
+    "label": "論文要旨を中国語に翻訳する。"
+  },
+  {
+    "id": "b",
+    "label": "論文タイトル案を 5 つ出す。"
+  },
+  {
+    "id": "c",
+    "label": "データ辞書を読み、ローカルツールを呼び、研究文脈を保持し、guardrail で臨床助言を止める。"
+  },
+  {
+    "id": "d",
+    "label": "医学用語を一つわかりやすく説明する。"
+  }
+]}
+  answers={["c"]}
+  feedback={{
+  "correct": "正解です。ツール、複数ステップ、記憶、安全境界、追跡が同時に必要なら Agents SDK が適しています。",
+  "incorrect": "もう一度考えてください。Agents SDK の価値は、一問一答ではなく、管理できる安全なワークフローにあります。",
+  "required": "答えを選んでから確認してください。",
+  "completed": "正解です。ツール、複数ステップ、記憶、安全境界、追跡が同時に必要なら Agents SDK が適しています。"
+}}
+  checkLabel={"答えを確認"}
+  resetLabel={"もう一度"}
+  completedLabel={"完了"}
+  typeLabel={"単一選択"}
+  reviewNote={"これは研究学習用の練習であり、臨床助言ではありません。実際の研究では研究者、統計家、倫理審査、臨床専門家による確認が必要です。"}
+  openPractice={"発展課題：Responses API だけでよいタスクと、Agents SDK を使うべきタスクを一つずつ書いてください。"}
+/>

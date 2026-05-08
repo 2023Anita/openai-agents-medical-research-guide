@@ -5,6 +5,8 @@ sidebar:
   order: 8
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Tracing](../../../../assets/architect/14-tracing.png)
 
 ## One-sentence explanation
@@ -45,5 +47,44 @@ Tracing helps you answer:
 
 ## Exercise
 
-Run the live demo and confirm which agents, tools, and guardrails appear in the Trace viewer.
-
+<InteractiveExercise
+  id={"en-tracing-interactive-check"}
+  kind={"multiple"}
+  title={"Trace review: what should a complete run show?"}
+  prompt={"When checking a complete run in the Trace viewer, which signals are key evidence?"}
+  options={[
+  {
+    "id": "a",
+    "label": "Which agent ran."
+  },
+  {
+    "id": "b",
+    "label": "Which tools were called, with reasonable inputs and outputs."
+  },
+  {
+    "id": "c",
+    "label": "Whether a guardrail triggered and why."
+  },
+  {
+    "id": "d",
+    "label": "Whether the final output follows the structure and safety boundary."
+  },
+  {
+    "id": "e",
+    "label": "The user API key in plain text."
+  }
+]}
+  answers={["a","b","c","d"]}
+  feedback={{
+  "correct": "Correct. Trace explains agents, tools, guardrails, and final output flow; it should not expose secrets.",
+  "incorrect": "Try again: Trace should help debug the execution path, but secrets must not appear as debugging evidence.",
+  "required": "Choose an answer before checking.",
+  "completed": "Correct. Trace explains agents, tools, guardrails, and final output flow; it should not expose secrets."
+}}
+  checkLabel={"Check answer"}
+  resetLabel={"Try again"}
+  completedLabel={"Completed"}
+  typeLabel={"Multiple choice"}
+  reviewNote={"This is a research-learning exercise, not clinical advice. Real projects still need human review by researchers, statisticians, ethics reviewers, or clinical experts."}
+  openPractice={"Open practice: run one real example and confirm which agents, tools, and guardrails appear in the Trace viewer."}
+/>

@@ -5,6 +5,8 @@ sidebar:
   order: 8
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Tracing](../../../../assets/architect/14-tracing.png)
 
 ## 一句话解释
@@ -45,5 +47,44 @@ Tracing 可以回答：
 
 ## 练习任务
 
-跑一次真实示例，在 Trace viewer 里确认有哪些 agent、tool 和 guardrail 被调用。
-
+<InteractiveExercise
+  id={"zh-tracing-interactive-check"}
+  kind={"multiple"}
+  title={"Trace 复盘：一次完整运行应该看到什么？"}
+  prompt={"在 Trace viewer 里检查一次完整运行时，哪些信息是关键证据？"}
+  options={[
+  {
+    "id": "a",
+    "label": "哪个 agent 被运行。"
+  },
+  {
+    "id": "b",
+    "label": "调用了哪些 tool，以及输入输出是否合理。"
+  },
+  {
+    "id": "c",
+    "label": "guardrail 是否触发，以及触发原因。"
+  },
+  {
+    "id": "d",
+    "label": "最终输出是否符合结构和安全边界。"
+  },
+  {
+    "id": "e",
+    "label": "用户的 API key 明文。"
+  }
+]}
+  answers={["a","b","c","d"]}
+  feedback={{
+  "correct": "正确。Trace 是为了复盘 agent、tool、guardrail 和最终输出链路；它不应该暴露密钥。",
+  "incorrect": "再想想：Trace 要帮助你解释执行链路和错误位置，但不能把敏感密钥当成调试信息展示。",
+  "required": "先选择一个答案，再检查。",
+  "completed": "正确。Trace 是为了复盘 agent、tool、guardrail 和最终输出链路；它不应该暴露密钥。"
+}}
+  checkLabel={"检查答案"}
+  resetLabel={"重来一次"}
+  completedLabel={"已完成"}
+  typeLabel={"多选题"}
+  reviewNote={"这是科研学习练习，不构成临床诊疗建议；真实项目仍需研究者、统计师、伦理审查或临床专家复核。"}
+  openPractice={"开放复刻任务：跑一次真实示例，在 Trace viewer 里确认有哪些 agent、tool 和 guardrail 被调用。"}
+/>

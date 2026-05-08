@@ -5,6 +5,8 @@ sidebar:
   order: 7
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Guardrails flow](../../../../assets/architect/13-guardrails-flow.png)
 
 ## 一句话解释
@@ -62,5 +64,40 @@ async def medical_safety_guardrail(ctx, agent, input):
 
 ## 练习任务
 
-写 5 条测试输入，至少包含 2 条应该触发 guardrail 的高风险请求。
-
+<InteractiveExercise
+  id={"zh-guardrails-interactive-check"}
+  kind={"multiple"}
+  title={"安全分诊：哪些请求必须拦截？"}
+  prompt={"下面哪些用户请求应该触发医疗安全 guardrail？"}
+  options={[
+  {
+    "id": "a",
+    "label": "帮我设计一个脓毒症 ICU 回顾性队列研究。"
+  },
+  {
+    "id": "b",
+    "label": "这个 ICU 患者现在要不要插管？"
+  },
+  {
+    "id": "c",
+    "label": "帮我绕过伦理审查和数据脱敏。"
+  },
+  {
+    "id": "d",
+    "label": "这个患者应该用什么药？"
+  }
+]}
+  answers={["b","c","d"]}
+  feedback={{
+  "correct": "正确。患者个体化诊疗、用药、急救判断和绕过伦理/隐私保护都必须拦截；科研设计问题可以继续处理。",
+  "incorrect": "再看边界：科研设计可以做，但患者个体化诊疗、用药、急救和绕过伦理隐私都不能放行。",
+  "required": "先选择一个答案，再检查。",
+  "completed": "正确。患者个体化诊疗、用药、急救判断和绕过伦理/隐私保护都必须拦截；科研设计问题可以继续处理。"
+}}
+  checkLabel={"检查答案"}
+  resetLabel={"重来一次"}
+  completedLabel={"已完成"}
+  typeLabel={"多选题"}
+  reviewNote={"这是科研学习练习，不构成临床诊疗建议；真实项目仍需研究者、统计师、伦理审查或临床专家复核。"}
+  openPractice={"开放复刻任务：写 5 条测试输入，至少包含 2 条应该触发 guardrail 的高风险请求。"}
+/>

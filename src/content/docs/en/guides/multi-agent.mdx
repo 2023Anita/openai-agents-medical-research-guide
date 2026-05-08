@@ -5,6 +5,8 @@ sidebar:
   order: 6
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Agents as tools](../../../../assets/architect/08-handoffs-vs-agents-as-tools.png)
 
 ## One-sentence explanation
@@ -54,5 +56,40 @@ Prefer a main agent that owns the final answer and calls specialist agents as to
 
 ## Exercise
 
-Add an `ethics_agent` responsible only for privacy, de-identification, and ethics-review reminders.
-
+<InteractiveExercise
+  id={"en-multi-agent-interactive-check"}
+  kind={"single"}
+  title={"Multi-agent orchestration: who summarizes the final answer?"}
+  prompt={"After adding literature, statistics, and ethics agents, which collaboration pattern is best for the first version?"}
+  options={[
+  {
+    "id": "a",
+    "label": "Let the three specialist agents answer the user directly without a main agent."
+  },
+  {
+    "id": "b",
+    "label": "Let the statistics agent decide all medical safety boundaries."
+  },
+  {
+    "id": "c",
+    "label": "Let a main agent call specialists, then produce one final answer with risk notes and human review reminders."
+  },
+  {
+    "id": "d",
+    "label": "Let every agent freely call every tool and produce final conclusions."
+  }
+]}
+  answers={["c"]}
+  feedback={{
+  "correct": "Correct. A main agent keeps orchestration, final format, safety boundaries, and tone under control.",
+  "incorrect": "Try again: multi-agent work should not become specialists speaking over each other. The main agent should integrate the result.",
+  "required": "Choose an answer before checking.",
+  "completed": "Correct. A main agent keeps orchestration, final format, safety boundaries, and tone under control."
+}}
+  checkLabel={"Check answer"}
+  resetLabel={"Try again"}
+  completedLabel={"Completed"}
+  typeLabel={"Single choice"}
+  reviewNote={"This is a research-learning exercise, not clinical advice. Real projects still need human review by researchers, statisticians, ethics reviewers, or clinical experts."}
+  openPractice={"Open practice: add `ethics_agent` and make the main agent include ethics risk in the final output."}
+/>

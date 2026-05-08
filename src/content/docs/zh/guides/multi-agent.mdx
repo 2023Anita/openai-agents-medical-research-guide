@@ -5,6 +5,8 @@ sidebar:
   order: 6
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Agents as tools](../../../../assets/architect/08-handoffs-vs-agents-as-tools.png)
 
 ## 一句话解释
@@ -54,5 +56,40 @@ print(result.final_output)
 
 ## 练习任务
 
-新增 `ethics_agent`，只负责隐私、脱敏、伦理审查提醒，并让主 agent 把伦理风险纳入最终输出。
-
+<InteractiveExercise
+  id={"zh-multi-agent-interactive-check"}
+  kind={"single"}
+  title={"多 Agent 分工：谁来汇总最终答案？"}
+  prompt={"文献助手、统计助手、伦理助手都加入后，哪种协作方式最适合第一版课程项目？"}
+  options={[
+  {
+    "id": "a",
+    "label": "让三个 specialist agents 分别直接回复用户，不需要主 agent。"
+  },
+  {
+    "id": "b",
+    "label": "让统计助手决定所有医学安全边界。"
+  },
+  {
+    "id": "c",
+    "label": "由主 agent 调用 specialist agents，再统一汇总答案、风险提示和人工复核提醒。"
+  },
+  {
+    "id": "d",
+    "label": "让每个 agent 都可以自由调用所有工具和输出最终结论。"
+  }
+]}
+  answers={["c"]}
+  feedback={{
+  "correct": "正确。第一版应让主 agent 统一调度和汇总，这样输出格式、安全边界和语气更可控。",
+  "incorrect": "再想想：多 agent 不是让所有专家各说各话，而是需要一个主 agent 负责整合和边界。",
+  "required": "先选择一个答案，再检查。",
+  "completed": "正确。第一版应让主 agent 统一调度和汇总，这样输出格式、安全边界和语气更可控。"
+}}
+  checkLabel={"检查答案"}
+  resetLabel={"重来一次"}
+  completedLabel={"已完成"}
+  typeLabel={"单选题"}
+  reviewNote={"这是科研学习练习，不构成临床诊疗建议；真实项目仍需研究者、统计师、伦理审查或临床专家复核。"}
+  openPractice={"开放复刻任务：新增 `ethics_agent`，并让主 agent 把伦理风险纳入最终输出。"}
+/>

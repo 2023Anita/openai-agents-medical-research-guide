@@ -50,3 +50,183 @@
   letter-spacing: 0;
 }
 
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.interactive-exercise {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--sl-color-white) 94%, transparent), color-mix(in srgb, var(--sl-color-accent-low) 26%, var(--sl-color-white))),
+    var(--sl-color-white);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 28%, var(--sl-color-gray-3));
+  border-radius: 8px;
+  box-shadow: 0 18px 54px color-mix(in srgb, var(--sl-color-black) 9%, transparent);
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+}
+
+.interactive-exercise h3 {
+  letter-spacing: 0;
+  margin: 0.6rem 0 0;
+}
+
+.exercise-kicker,
+.exercise-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: space-between;
+}
+
+.exercise-kicker {
+  color: var(--sl-color-accent);
+  font-size: 0.78rem;
+  font-weight: 760;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.exercise-status {
+  background: color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 22%, transparent);
+  border-radius: 999px;
+  color: var(--sl-color-accent-high);
+  padding: 0.25rem 0.6rem;
+  text-transform: none;
+}
+
+.exercise-prompt {
+  color: var(--sl-color-gray-5);
+  line-height: 1.7;
+  margin: 0.75rem 0 1rem;
+}
+
+.interactive-exercise fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.exercise-options {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.exercise-option {
+  align-items: flex-start;
+  background: color-mix(in srgb, var(--sl-color-white) 92%, var(--sl-color-gray-2));
+  border: 1px solid var(--sl-color-gray-3);
+  border-radius: 8px;
+  color: var(--sl-color-black);
+  cursor: pointer;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: auto auto 1fr;
+  line-height: 1.55;
+  padding: 0.85rem;
+}
+
+.exercise-option:hover,
+.exercise-option:focus-within {
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+}
+
+.exercise-option input {
+  margin-top: 0.32rem;
+}
+
+.exercise-option-key {
+  align-items: center;
+  background: color-mix(in srgb, var(--sl-color-accent) 13%, transparent);
+  border-radius: 999px;
+  color: var(--sl-color-accent-high);
+  display: inline-flex;
+  font-size: 0.74rem;
+  font-weight: 800;
+  height: 1.5rem;
+  justify-content: center;
+  min-width: 1.5rem;
+}
+
+.exercise-actions {
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+.exercise-actions button {
+  border: 1px solid var(--sl-color-gray-3);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 720;
+  padding: 0.62rem 0.95rem;
+}
+
+.exercise-actions button:first-child {
+  background: var(--sl-color-black);
+  border-color: var(--sl-color-black);
+  color: var(--sl-color-white);
+}
+
+.exercise-actions button:last-child {
+  background: transparent;
+  color: var(--sl-color-black);
+}
+
+.exercise-feedback {
+  border-radius: 8px;
+  font-weight: 650;
+  line-height: 1.65;
+  margin: 1rem 0 0;
+  padding: 0.85rem 1rem;
+}
+
+.interactive-exercise[data-state='correct'] .exercise-feedback,
+.interactive-exercise[data-state='complete'] .exercise-feedback {
+  background: color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 28%, transparent);
+  color: var(--sl-color-accent-high);
+}
+
+.interactive-exercise[data-state='incorrect'] .exercise-feedback {
+  background: color-mix(in srgb, #d97706 12%, transparent);
+  border: 1px solid color-mix(in srgb, #d97706 28%, transparent);
+  color: color-mix(in srgb, #d97706 70%, var(--sl-color-black));
+}
+
+.exercise-review-note,
+.exercise-open-practice {
+  color: var(--sl-color-gray-5);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0.85rem 0 0;
+}
+
+.exercise-open-practice {
+  border-top: 1px solid var(--sl-color-gray-3);
+  padding-top: 0.85rem;
+}
+
+@media (max-width: 520px) {
+  .interactive-exercise {
+    padding: 1rem;
+  }
+
+  .exercise-option {
+    grid-template-columns: auto 1fr;
+  }
+
+  .exercise-option-key {
+    display: none;
+  }
+}

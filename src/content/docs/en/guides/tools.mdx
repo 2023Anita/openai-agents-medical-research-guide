@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Tool flow](../../../../assets/architect/05-tool.png)
 
 ## One-sentence explanation
@@ -53,5 +55,40 @@ Start with three tool types:
 
 ## Exercise
 
-Add `explain_design(design_type)` for `cohort`, `case-control`, and `cross-sectional` designs.
-
+<InteractiveExercise
+  id={"en-tools-interactive-check"}
+  kind={"multiple"}
+  title={"Tool check: what must explain_design() cover?"}
+  prompt={"When adding `explain_design(design_type)`, which requirements should count as passing the exercise?"}
+  options={[
+  {
+    "id": "a",
+    "label": "Explain when cohort studies are useful."
+  },
+  {
+    "id": "b",
+    "label": "Explain when case-control studies are useful."
+  },
+  {
+    "id": "c",
+    "label": "Explain when cross-sectional studies are useful."
+  },
+  {
+    "id": "d",
+    "label": "Recommend treatment plans for individual patients."
+  }
+]}
+  answers={["a","b","c"]}
+  feedback={{
+  "correct": "Correct. The tool should cover the three study designs and stay inside research explanation, not treatment advice.",
+  "incorrect": "Check again: the tool explains research designs. It should not become a treatment recommendation tool.",
+  "required": "Choose an answer before checking.",
+  "completed": "Correct. The tool should cover the three study designs and stay inside research explanation, not treatment advice."
+}}
+  checkLabel={"Check answer"}
+  resetLabel={"Try again"}
+  completedLabel={"Completed"}
+  typeLabel={"Multiple choice"}
+  reviewNote={"This is a research-learning exercise, not clinical advice. Real projects still need human review by researchers, statisticians, ethics reviewers, or clinical experts."}
+  openPractice={"Open practice: implement `explain_design(design_type)` and return a clarification prompt for unknown design types."}
+/>

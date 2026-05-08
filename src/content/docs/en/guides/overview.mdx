@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ## One-sentence explanation
 
 The Agents SDK is a Python toolkit for building AI workflows that can use tools, run multi-step tasks, coordinate specialist agents, and be debugged.
@@ -42,4 +44,40 @@ Not good fits:
 
 ## Exercise
 
-Explain when you would use the Responses API for a simple literature summary, and when you would use the Agents SDK for a workflow that reads a data dictionary, calls tools, creates a plan, and keeps context.
+<InteractiveExercise
+  id={"en-overview-interactive-check"}
+  kind={"single"}
+  title={"Quick check: when do you need the Agents SDK?"}
+  prompt={"Which task most clearly needs the Agents SDK instead of one plain Responses API call?"}
+  options={[
+  {
+    "id": "a",
+    "label": "Translate one abstract into Chinese."
+  },
+  {
+    "id": "b",
+    "label": "Generate five alternative paper titles."
+  },
+  {
+    "id": "c",
+    "label": "Read a data dictionary, call local tools, keep project context, and block clinical advice with guardrails."
+  },
+  {
+    "id": "d",
+    "label": "Explain one medical term in plain language."
+  }
+]}
+  answers={["c"]}
+  feedback={{
+  "correct": "Correct. When tools, multi-step flow, memory, safety boundaries, and tracing appear together, the Agents SDK is the better fit.",
+  "incorrect": "Try again: the Agents SDK is about orchestrated, reviewable, bounded workflows, not just answering one prompt.",
+  "required": "Choose an answer before checking.",
+  "completed": "Correct. When tools, multi-step flow, memory, safety boundaries, and tracing appear together, the Agents SDK is the better fit."
+}}
+  checkLabel={"Check answer"}
+  resetLabel={"Try again"}
+  completedLabel={"Completed"}
+  typeLabel={"Single choice"}
+  reviewNote={"This is a research-learning exercise, not clinical advice. Real projects still need human review by researchers, statisticians, ethics reviewers, or clinical experts."}
+  openPractice={"Open practice: write one task that only needs the Responses API, and one task that should use the Agents SDK."}
+/>

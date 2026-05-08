@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+import InteractiveExercise from '../../../../components/InteractiveExercise.astro';
+
 ![Tool flow](../../../../assets/architect/05-tool.png)
 
 ## 一句话解释
@@ -53,5 +55,40 @@ print(result.final_output)
 
 ## 练习任务
 
-新增 `explain_design(design_type)`，支持 `cohort`、`case-control`、`cross-sectional` 三种研究设计。
-
+<InteractiveExercise
+  id={"zh-tools-interactive-check"}
+  kind={"multiple"}
+  title={"工具检查：explain_design() 至少要覆盖什么？"}
+  prompt={"新增 `explain_design(design_type)` 时，下面哪些要求应该被视为通过练习的必要条件？"}
+  options={[
+  {
+    "id": "a",
+    "label": "能解释 cohort / 队列研究的适用场景。"
+  },
+  {
+    "id": "b",
+    "label": "能解释 case-control / 病例对照研究的适用场景。"
+  },
+  {
+    "id": "c",
+    "label": "能解释 cross-sectional / 横断面研究的适用场景。"
+  },
+  {
+    "id": "d",
+    "label": "能根据患者情况直接推荐治疗方案。"
+  }
+]}
+  answers={["a","b","c"]}
+  feedback={{
+  "correct": "正确。这个工具要覆盖三种研究设计，并保持科研解释边界；它不应该变成治疗推荐工具。",
+  "incorrect": "再检查一下：这个工具的目标是解释研究设计，而不是输出患者诊疗建议。三种设计都要覆盖。",
+  "required": "先选择一个答案，再检查。",
+  "completed": "正确。这个工具要覆盖三种研究设计，并保持科研解释边界；它不应该变成治疗推荐工具。"
+}}
+  checkLabel={"检查答案"}
+  resetLabel={"重来一次"}
+  completedLabel={"已完成"}
+  typeLabel={"多选题"}
+  reviewNote={"这是科研学习练习，不构成临床诊疗建议；真实项目仍需研究者、统计师、伦理审查或临床专家复核。"}
+  openPractice={"开放复刻任务：实现 `explain_design(design_type)`，并为未知设计类型返回“请确认研究问题和数据来源”的提示。"}
+/>
