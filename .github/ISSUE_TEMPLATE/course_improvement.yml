@@ -1,0 +1,37 @@
+name: Course improvement
+description: Suggest a clearer explanation, example, translation, or safety note.
+title: "[Course]: "
+labels: ["course", "documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Course improvements are welcome. Please keep the project within medical research education, not clinical advice.
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - Chinese
+        - English
+        - Japanese
+        - All languages
+    validations:
+      required: true
+  - type: input
+    id: chapter
+    attributes:
+      label: Chapter or section
+      placeholder: "Example: Guardrails"
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: What should be clearer, safer, or more useful?
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why it helps
+      description: Explain how this improves learning or safety.

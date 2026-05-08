@@ -1,0 +1,40 @@
+name: Exercise idea
+description: Propose a new interactive checkpoint or open practice task.
+title: "[Exercise]: "
+labels: ["exercise", "course"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Exercise ideas should test a concrete learning decision and avoid private medical data.
+  - type: input
+    id: chapter
+    attributes:
+      label: Target chapter
+      placeholder: "Example: Tools"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Exercise type
+      options:
+        - Single choice
+        - Multiple choice
+        - Open practice
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Proposed prompt
+      description: Write the learner-facing question.
+    validations:
+      required: true
+  - type: textarea
+    id: answer
+    attributes:
+      label: Expected answer and feedback
+      description: Include the correct answer and a short coaching explanation.
+    validations:
+      required: true

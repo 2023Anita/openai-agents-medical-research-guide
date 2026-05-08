@@ -1,60 +1,104 @@
-# Figma Design Spec
+# Portfolio Design Spec
 
 ## Objective
 
-Create a premium documentation design for `OpenAI Agents SDK for Medical Research`, a multilingual course for doctors, researchers, and AI builders.
+Create a premium portfolio-grade presentation for `OpenAI Agents SDK for Medical Research`: a multilingual, GitHub-native, interactive course lab for learning the OpenAI Agents SDK through a safety-first medical research assistant.
 
-The design should feel professional, calm, and credible. It should not feel like a startup landing page with loud gradients. The subject is medical research education, so clarity and trust matter more than spectacle.
+The design should feel credible, calm, clinical, and highly intentional. It should communicate that this is not a slide deck or a loose tutorial. It is a reusable AI education product prototype that learners can answer, fork, remix, and publish.
+
+## Portfolio Message
+
+Primary message:
+
+```text
+Not a slide deck. A forkable interactive course lab for medical research agents.
+```
+
+Supporting message:
+
+```text
+Read the concept, answer the checkpoint, inspect the code, fork the repo, and rebuild the course for your own research or teaching context.
+```
 
 ## Frames
 
-### 1. Home Desktop
+### 1. GitHub README Hero
+
+- Size: 1440 × 900.
+- Purpose: show what the GitHub repository should communicate in the first five seconds.
+- Include:
+  - project banner
+  - badge row
+  - live course CTA
+  - interactive checkpoint CTA
+  - fork/remix CTA
+  - three screenshot slots
+- Visual style:
+  - GitHub-friendly white background
+  - restrained medical teal accents
+  - strong hierarchy, no decorative clutter
+
+### 2. Homepage
 
 - Size: 1440 × 1200.
-- Header: brand text on the left, language switcher on the right.
+- Header:
+  - brand on the left
+  - language switcher on the right
 - Hero:
-  - Eyebrow: `Multilingual course · Python · Safety-first agents`
-  - H1: `Build medical research agents with clarity, boundaries, and taste.`
-  - Supporting copy: one paragraph explaining the medical research assistant project.
-  - CTA buttons: `Start learning`, `View demo code`.
-- Three cards:
+  - Eyebrow: `Interactive Course Lab · Python · Safety-first agents`
+  - H1: `Build medical research agents in a course you can answer, fork, and remix.`
+  - Supporting copy: explain the GitHub-native course lab concept.
+  - CTA buttons: `Start learning`, `Try an exercise`, `View demo code`.
+- Product panel:
+  - `Answer`
+  - `Feedback`
+  - `Remix`
+- Course cards:
   - `Agent Workflow`
   - `Medical Research Safety`
   - `Seamless Languages`
-- Course map section:
-  - Seven core chapters plus overview.
 
-### 2. Home Mobile
+### 3. Interactive Exercise Card
 
-- Size: 390 × 1200.
-- Header stacks language switcher below brand.
-- Hero H1 wraps cleanly, no text clipping.
-- Cards become one column.
-- Course map remains scan-friendly.
+- Size: 900 × 760.
+- Show four states:
+  - unanswered
+  - incorrect
+  - correct
+  - completed after refresh
+- Include:
+  - question type chip
+  - completion chip
+  - answer options
+  - primary check button
+  - reset button
+  - feedback panel
+  - review note
+  - open practice prompt
+- The card should feel like a serious learning checkpoint, not a quiz toy.
 
-### 3. Docs Page
+### 4. Fork / Remix Flow
 
-- Size: 1440 × 1200.
-- Left sidebar with Course navigation.
-- Main content width: 720-820 px.
-- Right table of contents.
-- Components:
-  - Title block.
-  - Hero image.
-  - Callout for medical safety boundary.
-  - Python code block.
-  - Common mistakes list.
-  - Exercise block.
-  - Interactive checkpoint card with answer options and feedback states.
+- Size: 1440 × 900.
+- Show the learner journey:
 
-### 4. Language Switch State
+```text
+Read
+→ Answer
+→ Run demo
+→ Fork
+→ Replace scenario
+→ Publish
+```
 
-- Show language menu with:
-  - 中文
-  - English
-  - 日本語
-- The selected language should be visible but restrained.
-- Switching should imply same chapter, different language.
+- Include three remix examples:
+  - nursing research assistant
+  - pharmacy research assistant
+  - public health research assistant
+- Visual style:
+  - clean flow diagram
+  - small code/repo cues
+  - no brand logos except project-owned assets
 
 ## Visual System
 
@@ -68,48 +112,50 @@ The design should feel professional, calm, and credible. It should not feel like
 - Mint accent: `#57C9B5`
 - Border: `rgba(21, 33, 31, 0.12)`
 - Code background: `#101917`
+- Warning feedback: restrained amber, not alert-red
 
 ### Typography
 
 - Primary font: Inter or system sans.
 - Mono font: SF Mono or equivalent.
-- Letter spacing: 0.
-- Hero scale only on homepage; docs pages should use tighter professional type.
+- Letter spacing: `0`.
+- Hero-scale type only on homepage and portfolio hero frames.
+- Docs, cards, and exercise states use compact professional type.
 
 ### Component Rules
 
 - Cards: 8 px radius max.
-- Buttons: pill shape is allowed only for clear CTA and language chips.
+- Buttons: pill shape allowed only for CTAs, language chips, and exercise actions.
 - Code blocks: dark, low-saturation, readable.
-- Callouts: use teal accent, avoid alert-heavy red unless discussing risk.
-- No decorative orbs or one-note purple gradients.
+- Callouts: teal accent for research boundary; amber only for coaching feedback.
+- Do not use decorative orbs, bokeh blobs, loud gradients, or one-note purple palettes.
 
 ## Content Components
 
-- Course card:
-  - Small number.
-  - Short title.
-  - One concise explanatory paragraph.
+- README screenshot strip:
+  - homepage
+  - interactive exercise
+  - docs page
 - Safety callout:
   - Title: `Research only, not clinical advice`
   - Body: diagnosis, treatment, triage, medication, and patient-specific advice are out of scope.
-- Exercise block:
-  - Short task.
-  - Expected output.
-  - Human review reminder when relevant.
 - Interactive checkpoint:
-  - State 1, unanswered: neutral card, visible answer options, primary `Check answer` button.
-  - State 2, correct: teal success feedback, completion chip visible, option layout unchanged.
-  - State 3, incorrect: warm amber feedback with a coaching hint, no harsh error styling.
-  - State 4, completed: restored completion state after refresh, no user answer text stored.
-  - Supports single-choice and multiple-choice questions.
-  - Includes an open practice prompt for forking or remixing the lesson.
+  - Single-choice and multiple-choice variants.
+  - Correct and incorrect feedback states.
+  - Browser-local completion state only.
+  - Open practice prompt for fork/remix work.
+- Fork/remix card:
+  - audience
+  - replacement scenario
+  - safety boundary
+  - publish path
 
 ## Implementation Notes
 
-- The implemented site uses Astro Starlight.
-- CSS tokens live in `src/styles/custom.css`.
-- Landing page lives in `src/pages/index.astro`.
-- Documentation pages live under `src/content/docs/{zh,en,ja}/`.
-- Interactive checkpoint component lives in `src/components/InteractiveExercise.astro`.
-- Checkpoint state is static and browser-local; no backend, login, database, or API key is required.
+- Site framework: Astro Starlight.
+- Landing page: `src/pages/index.astro`.
+- Interactive component: `src/components/InteractiveExercise.astro`.
+- Course content: `src/content/docs/{zh,en,ja}/`.
+- Visual tokens: `src/styles/custom.css`.
+- README screenshots: `docs/assets/portfolio/`.
+- No backend, login, database, or API key is required for interactive exercises.
