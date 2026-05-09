@@ -1,0 +1,33 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Learning loop diagram</title>
+  <desc id="desc">The course loop: read, answer, check, remix.</desc>
+  <rect width="1440" height="900" fill="#F7FAF9"/>
+  <text x="100" y="132" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">LEARNING LOOP</text>
+  <text x="100" y="202" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800">A course that asks learners to do something.</text>
+  <text x="102" y="256" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="26">The page is not the endpoint. It is the start of a forkable learning cycle.</text>
+  <rect x="120" y="376" width="240" height="180" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="160" y="440" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">01</text>
+  <text x="160" y="488" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">Read</text>
+  <text x="160" y="526" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="20">Concept, analogy, code.</text>
+  <rect x="438" y="376" width="240" height="180" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="478" y="440" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">02</text>
+  <text x="478" y="488" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">Answer</text>
+  <text x="478" y="526" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="20">Choose a checkpoint.</text>
+  <rect x="756" y="376" width="240" height="180" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="796" y="440" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">03</text>
+  <text x="796" y="488" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">Check</text>
+  <text x="796" y="526" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="20">Get static feedback.</text>
+  <rect x="1074" y="376" width="240" height="180" rx="8" fill="#101917"/>
+  <text x="1114" y="440" fill="#57C9B5" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">04</text>
+  <text x="1114" y="488" fill="#F8FBFA" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">Remix</text>
+  <text x="1114" y="526" fill="#B7C9C4" font-family="Inter, Arial, sans-serif" font-size="20">Fork into a new course.</text>
+  <path d="M370 466H422" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M422 466L404 454M422 466L404 478" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M688 466H740" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M740 466L722 454M740 466L722 478" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1006 466H1058" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1058 466L1040 454M1058 466L1040 478" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <rect x="278" y="670" width="884" height="82" rx="8" fill="#EEF5F3" stroke="#D8E4E1"/>
+  <text x="330" y="722" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">Portfolio signal:</text>
+  <text x="565" y="722" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="28">learning is visible as a working repository.</text>
+</svg>

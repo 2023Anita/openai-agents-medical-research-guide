@@ -100,6 +100,39 @@ Read
   - small code/repo cues
   - no brand logos except project-owned assets
 
+### 5. Portfolio Case Study Page
+
+- Size: 1440 × 1600.
+- Purpose: communicate the project as a portfolio-grade AI education product case.
+- Include:
+  - top navigation with course and GitHub links
+  - case-study hero: `From slides to GitHub-native interactive AI course labs.`
+  - problem section: passive PPT is not enough for fast-moving AI frameworks
+  - proof cards: `Interactive Learning`, `Forkable Course Lab`, `Safety-first Medical AI`
+  - three visual proof sections using the new assets
+  - final CTA band linking to course, demo code, and GitHub repo
+- Visual style:
+  - editorial case-study rhythm
+  - large hero type only in the opening section
+  - wide visual panels, never nested cards
+  - restrained clinical palette
+
+### 6. Portfolio Visual Asset Pack
+
+- Assets:
+  - `public/portfolio/case-study-cover.svg`
+  - `public/portfolio/learning-loop.svg`
+  - `public/portfolio/agent-architecture.svg`
+  - `public/portfolio/fork-remix-flow.svg`
+- Purpose:
+  - README proof strip
+  - case-study page visual sections
+  - social sharing and project presentation screenshots
+- Design requirements:
+  - all text must remain readable at GitHub README width
+  - no dependency on external images or private Figma files
+  - diagrams should explain product judgment, not decorate the page
+
 ## Visual System
 
 ### Color
@@ -136,6 +169,11 @@ Read
   - homepage
   - interactive exercise
   - docs page
+- Portfolio proof strip:
+  - case-study cover
+  - learning loop
+  - agent architecture
+  - fork/remix path
 - Safety callout:
   - Title: `Research only, not clinical advice`
   - Body: diagnosis, treatment, triage, medication, and patient-specific advice are out of scope.
@@ -154,8 +192,10 @@ Read
 
 - Site framework: Astro Starlight.
 - Landing page: `src/pages/index.astro`.
+- Portfolio case-study page: `src/pages/case-study.astro`.
 - Interactive component: `src/components/InteractiveExercise.astro`.
 - Course content: `src/content/docs/{zh,en,ja}/`.
 - Visual tokens: `src/styles/custom.css`.
 - README screenshots: `docs/assets/portfolio/`.
+- Portfolio visuals: `public/portfolio/`.
 - No backend, login, database, or API key is required for interactive exercises.

@@ -1,0 +1,35 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fork and remix flow</title>
+  <desc id="desc">A portfolio diagram showing how learners fork and remix the course into their own project.</desc>
+  <rect width="1440" height="900" fill="#F7FAF9"/>
+  <text x="96" y="128" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">FORK / REMIX PATH</text>
+  <text x="96" y="198" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800">A course that becomes the learner's own project.</text>
+  <text x="98" y="252" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="26">The final assignment is not a slide reflection. It is a visible, published fork.</text>
+  <rect x="100" y="352" width="196" height="116" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="136" y="402" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800">Fork</text>
+  <text x="136" y="436" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="18">copy the repo</text>
+  <rect x="390" y="352" width="232" height="116" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="426" y="402" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800">Replace</text>
+  <text x="426" y="436" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="18">change the scenario</text>
+  <rect x="716" y="352" width="232" height="116" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="752" y="402" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800">Validate</text>
+  <text x="752" y="436" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="18">build and check</text>
+  <rect x="1042" y="352" width="240" height="116" rx="8" fill="#101917"/>
+  <text x="1080" y="402" fill="#F8FBFA" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800">Publish</text>
+  <text x="1080" y="436" fill="#B7C9C4" font-family="Inter, Arial, sans-serif" font-size="18">ship with Pages</text>
+  <path d="M310 410H374" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M374 410L356 398M374 410L356 422" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M636 410H700" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M700 410L682 398M700 410L682 422" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M962 410H1026" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1026 410L1008 398M1026 410L1008 422" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <rect x="158" y="610" width="320" height="120" rx="8" fill="#EEF5F3" stroke="#D8E4E1"/>
+  <text x="198" y="660" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Nursing research</text>
+  <text x="198" y="696" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="19">scales, outcomes, care quality</text>
+  <rect x="560" y="610" width="320" height="120" rx="8" fill="#EEF5F3" stroke="#D8E4E1"/>
+  <text x="600" y="660" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Pharmacy research</text>
+  <text x="600" y="696" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="19">drug safety, adverse events</text>
+  <rect x="962" y="610" width="320" height="120" rx="8" fill="#EEF5F3" stroke="#D8E4E1"/>
+  <text x="1002" y="660" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Public health</text>
+  <text x="1002" y="696" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="19">surveillance, population ethics</text>
+</svg>

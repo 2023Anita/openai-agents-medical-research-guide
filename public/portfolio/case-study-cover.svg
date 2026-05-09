@@ -1,0 +1,36 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Portfolio case study cover</title>
+  <desc id="desc">A refined portfolio cover for the OpenAI Agents SDK medical research course lab.</desc>
+  <rect width="1440" height="900" fill="#F7FAF9"/>
+  <rect x="76" y="72" width="1288" height="756" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <rect x="76" y="72" width="1288" height="116" rx="8" fill="#101917"/>
+  <rect x="76" y="162" width="1288" height="26" fill="#101917"/>
+  <circle cx="132" cy="130" r="13" fill="#57C9B5"/>
+  <circle cx="172" cy="130" r="13" fill="#238676"/>
+  <circle cx="212" cy="130" r="13" fill="#D7F0EA"/>
+  <text x="270" y="139" fill="#F8FBFA" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">OpenAI Agents SDK for Medical Research</text>
+  <text x="104" y="269" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">PORTFOLIO CASE STUDY</text>
+  <text x="104" y="355" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="78" font-weight="800">From slides to a</text>
+  <text x="104" y="445" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="78" font-weight="800">GitHub-native</text>
+  <text x="104" y="535" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="78" font-weight="800">AI course lab.</text>
+  <text x="108" y="602" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="28">Read, answer, run, fork, remix, and publish.</text>
+  <rect x="108" y="656" width="212" height="58" rx="29" fill="#15211F"/>
+  <text x="142" y="694" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Live course</text>
+  <rect x="338" y="656" width="260" height="58" rx="29" fill="#EEF5F3" stroke="#D8E4E1"/>
+  <text x="374" y="694" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Case study</text>
+  <rect x="736" y="266" width="520" height="90" rx="8" fill="#F7FAF9" stroke="#D8E4E1"/>
+  <text x="770" y="304" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">01</text>
+  <text x="820" y="304" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Interactive Learning</text>
+  <text x="820" y="335" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="18">Every chapter has a static checkpoint.</text>
+  <rect x="736" y="382" width="520" height="90" rx="8" fill="#F7FAF9" stroke="#D8E4E1"/>
+  <text x="770" y="420" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">02</text>
+  <text x="820" y="420" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Forkable Course Lab</text>
+  <text x="820" y="451" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="18">Learners can rebuild it as their own repo.</text>
+  <rect x="736" y="498" width="520" height="90" rx="8" fill="#F7FAF9" stroke="#D8E4E1"/>
+  <text x="770" y="536" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">03</text>
+  <text x="820" y="536" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Safety-first Medical AI</text>
+  <text x="820" y="567" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="18">Research support only, never clinical advice.</text>
+  <rect x="736" y="632" width="520" height="92" rx="8" fill="#101917"/>
+  <text x="770" y="670" fill="#57C9B5" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">PROOF</text>
+  <text x="770" y="704" fill="#F8FBFA" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Site + exercises + demo code + remix docs</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Medical research agent architecture</title>
+  <desc id="desc">Architecture diagram for the medical research assistant course project.</desc>
+  <rect width="1440" height="900" fill="#F7FAF9"/>
+  <text x="96" y="128" fill="#238676" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">SYSTEM MAP</text>
+  <text x="96" y="198" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800">One agent project, seven SDK concepts.</text>
+  <text x="98" y="252" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="26">The course turns abstract SDK vocabulary into a visible medical research workflow.</text>
+  <rect x="96" y="360" width="232" height="112" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="136" y="407" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800">Learner</text>
+  <text x="136" y="441" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="19">Research question</text>
+  <rect x="440" y="330" width="280" height="172" rx="8" fill="#101917"/>
+  <text x="488" y="385" fill="#57C9B5" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Agent + Runner</text>
+  <text x="488" y="430" fill="#F8FBFA" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">Orchestrator</text>
+  <text x="488" y="465" fill="#B7C9C4" font-family="Inter, Arial, sans-serif" font-size="19">Role, instructions, flow</text>
+  <rect x="842" y="300" width="220" height="92" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="882" y="355" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Literature</text>
+  <rect x="842" y="422" width="220" height="92" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="882" y="477" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Statistics</text>
+  <rect x="842" y="544" width="220" height="92" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="882" y="599" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Writing</text>
+  <rect x="1168" y="360" width="176" height="112" rx="8" fill="#FFFFFF" stroke="#D8E4E1" stroke-width="2"/>
+  <text x="1208" y="407" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800">Brief</text>
+  <text x="1208" y="441" fill="#536762" font-family="Inter, Arial, sans-serif" font-size="19">Structured output</text>
+  <path d="M338 416H424" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M424 416L406 404M424 416L406 428" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M720 416C770 350 786 346 826 346" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M720 416H826" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M720 416C770 590 786 590 826 590" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1070 416H1152" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1152 416L1134 404M1152 416L1134 428" stroke="#238676" stroke-width="4" stroke-linecap="round"/>
+  <rect x="182" y="676" width="310" height="86" rx="8" fill="#EEF5F3" stroke="#D8E4E1"/>
+  <text x="222" y="729" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Sessions keep context</text>
+  <rect x="565" y="676" width="310" height="86" rx="8" fill="#EEF5F3" stroke="#D8E4E1"/>
+  <text x="605" y="729" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Guardrails set limits</text>
+  <rect x="948" y="676" width="310" height="86" rx="8" fill="#EEF5F3" stroke="#D8E4E1"/>
+  <text x="988" y="729" fill="#15211F" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Tracing shows steps</text>
+</svg>
